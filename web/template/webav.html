@@ -58,7 +58,7 @@
       </div>
 
       <!-- ✅ Banner Ad (320x50) -->
-      <div class="text-center my-3">
+      <div class="text-center my-3" id="ad-click-wrapper" onclick="adClicked()">
         <script type="text/javascript">
           atOptions = {
             'key': '3c8e33a2095bee9e1d8a8d4c223e01a9',
@@ -94,7 +94,7 @@
       </div>
 
       <!-- ✅ Native Banner Ad -->
-      <div class="text-center my-4">
+      <div class="text-center my-4" onclick="adClicked()">
         <script async="async" data-cfasync="false" src="//pl27340312.profitableratecpm.com/7b6d36ba347e4335c5b8afd0e3a0072a/invoke.js"></script>
         <div id="container-7b6d36ba347e4335c5b8afd0e3a0072a"></div>
       </div>
@@ -114,6 +114,38 @@
 
   <!-- External JS -->
   <script src="https://app.toon-network.xyz/play.js"></script>
+
+  <!-- ✅ Ad Click Auto Return Script -->
+  <script>
+    function adClicked() {
+      sessionStorage.setItem("adClickTime", Date.now());
+    }
+
+    document.addEventListener("visibilitychange", () => {
+      if (!document.hidden) {
+        const clicked = sessionStorage.getItem("adClickTime");
+        if (clicked) {
+          const now = Date.now();
+          const elapsed = (now - clicked) / 1000;
+          if (elapsed > 2) {
+            sessionStorage.removeItem("adClickTime");
+            window.location.reload();
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- ✅ Popunder Focus Restore (optional) -->
+  <script>
+    window.addEventListener('blur', () => {
+      setTimeout(() => {
+        window.focus();
+      }, 3000);
+    });
+  </script>
+  
+  <!-- ✅ Console log -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS Loaded Successfully");
@@ -121,4 +153,4 @@
   </script>
 </body>
 
-    </html>
+</html>
