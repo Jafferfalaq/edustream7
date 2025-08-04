@@ -51,11 +51,11 @@ DB_URL = environ.get('DATABASE_URI', "mongodb+srv://Toon:ODfeWgd93Ny1y7id@cluste
 DB_NAME = environ.get('DATABASE_NAME', "cluster0")  # MongoDB database name
 
 # 📸 all Media (Images)
-QR_CODE = environ.get('QR_CODE', 'https://graph.org/file/6afb4093d5ec5c4176979.jpg')  # QR Code image
+QR_CODE = environ.get('QR_CODE', 'https://ibb.co/prR4mnxX')  # QR Code image
 VERIFY_IMG = environ.get("VERIFY_IMG", "https://graph.org/file/1669ab9af68eaa62c3ca4.jpg")  # Verify success image
-AUTH_PICS = environ.get('AUTH_PICS', 'https://envs.sh/AwV.jpg')  # Auth step image
+AUTH_PICS = environ.get('AUTH_PICS', 'https://ibb.co/tPpNdgK3')  # Auth step image
 PICS = environ.get('PICS', 'https://envs.sh/_pM.jpg')  # Default info image
-FILE_PIC = environ.get('FILE_PIC', 'https://i.ibb.co/bj4My0bW/photo-2025-07-21-02-15-21-7529360175656861700.jpg') # file image 
+FILE_PIC = environ.get('FILE_PIC', 'https://ibb.co/0yLJqB7D') # file image 
 
 # 📝 File Captions
 FILE_CAPTION = environ.get('FILE_CAPTION', f"{script.CAPTION}")  # Caption for single file
