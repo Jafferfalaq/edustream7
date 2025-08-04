@@ -117,25 +117,8 @@
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS Loaded Successfully");
-
-      // Theme toggle script
-      const themeToggleBtn = document.getElementById("theme-toggle-btn");
-      themeToggleBtn.addEventListener("click", () => {
-        document.body.classList.toggle("bg-dark");
-        document.body.classList.toggle("text-light");
-        document.body.classList.toggle("bg-light");
-        document.body.classList.toggle("text-dark");
-
-        const icon = themeToggleBtn.querySelector("i");
-        if (icon.classList.contains("fa-sun")) {
-          icon.classList.replace("fa-sun", "fa-moon");
-          themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
-        } else {
-          icon.classList.replace("fa-moon", "fa-sun");
-          themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
-        }
-      });
     });
   </script>
 </body>
-</html>
+
+    </html>
