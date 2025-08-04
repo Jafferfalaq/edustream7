@@ -61,8 +61,8 @@ Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
 🔞 ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.
 
 📮 Hᴇʟᴘ & Sᴜᴘᴘᴏʀᴛ:
-• Uᴘᴅᴀᴛᴇꜱ: @AV_BOTz_UPDATE
-• Sᴜᴘᴘᴏʀᴛ: @AV_SUPPORT_GROUP
+• Uᴘᴅᴀᴛᴇꜱ: @Toon_Network_Update
+• Sᴜᴘᴘᴏʀᴛ: https://t.me/+CGKhh4udI1c2MjI1
 
  <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/toon_senpai'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></u></i></b>"""
 
@@ -131,7 +131,7 @@ Nᴀᴍᴇ - {}</b>"""
  ❏ 3$    ➠    𝟶𝟹 ᴍᴏɴᴛʜ
  ❏ 5$    ➠    𝟷𝟸 ᴍᴏɴᴛʜ
 
-🆔 ᴜᴘɪ ɪᴅ ➩ <code>.......</code> [ᴛᴀᴘ ᴛᴏ ᴄᴏᴘʏ]
+🆔 Binance ɪᴅ ➩ <code>.......</code> [473703243]
  
 ⛽️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
