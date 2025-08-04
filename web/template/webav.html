@@ -7,7 +7,7 @@
   <link rel="icon" href="https://app.toon-network.xyz/logo.png" type="image/x-icon">
   <meta name="description" content="Stream high-quality videos and movies in 1080p. Experience seamless playback with multiple player options." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- External CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet" />
@@ -27,7 +27,7 @@
         </button>
       </div>
     </header>
-    
+
     <!-- Main content -->
     <main class="flex-grow-1 container py-3">
       <div class="player-wrapper mb-3">
@@ -36,7 +36,7 @@
         </video>
         <script src="https://cdn.plyr.io/3.6.12/plyr.js"></script>
       </div>
-      
+
       <div class="d-flex justify-content-between mb-2 flex-wrap gap-2">
         <a onclick="mx_player()" class="btn btn-primary flex-fill" style="border: none; background-color: {{ colours.mx_player.background }}; color: {{ colours.mx_player.color }};">
           <i class="fa fa-play"></i> <b>MX Player</b>
@@ -48,7 +48,7 @@
           <i class="fa fa-play"></i> <b>Play it</b>
         </a>
       </div>
-      
+
       <div class="row g-3 mb-2">
         <div class="col-md-6">
           <a onclick="streamDownload()" class="btn btn-success w-100" style="border: none; background-color: {{ colours.download.background }}; color: {{ colours.download.color }};">
@@ -56,15 +56,29 @@
           </a>
         </div>
       </div>
-      
+
+      <!-- ✅ Banner Ad (300x250) -->
+      <div class="text-center my-3">
+        <script type="text/javascript">
+          atOptions = {
+            'key': 'cf231896a308b3bb2016d616c9dd8c21',
+            'format': 'iframe',
+            'height': 250,
+            'width': 300,
+            'params': {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/cf231896a308b3bb2016d616c9dd8c21/invoke.js"></script>
+      </div>
+
       <a id="tg_button" onclick="showLinkModal('https://t.me/ToonStreamLink_BOT')" class="btn btn-warning w-100 mb-2" style="border: none; background-color: {{ colours.create_link.background }}; color: {{ colours.create_link.color }};">
         <i class="fa-brands fa-telegram"></i> Create Like This Link
       </a>
-      
+
       <a onclick="shareButton()" class="btn btn-danger w-100 mb-3" style="border: none; background-color: {{ colours.share.background }}; color: {{ colours.share.color }};">
         <i class="fa fa-share-alt"></i> Share Now
       </a>
-      
+
       <div class="card bg-dark text-light border-secondary mb-4" style="background-color: {{ colours.file_information.background }}  !important; color: {{ colours.file_information.color }}  !important;">
         <div class="card-header border-secondary">
           <h5 class="mb-0"><i class="fa-solid fa-circle-info me-2"></i> File Information</h5>
@@ -78,7 +92,13 @@
           </div>
         </div>
       </div>
-      
+
+      <!-- ✅ Native Banner Ad -->
+      <div class="text-center my-4">
+        <script async="async" data-cfasync="false" src="//pl27340312.profitableratecpm.com/7b6d36ba347e4335c5b8afd0e3a0072a/invoke.js"></script>
+        <div id="container-7b6d36ba347e4335c5b8afd0e3a0072a"></div>
+      </div>
+
       <div class="alert alert-warning" style="background-color: {{ colours.description.background }}; color: {{ colours.description.color }};">
         <h6 class="fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i> Disclaimer</h6>
         <p class="mb-0">{{disclaimer}}</p>
@@ -86,31 +106,36 @@
           <a href="{{report_link}}" class="report">Report</a>
         </div>
       </div>
+    </main>
   </div>
-  </main>
-  <!-- Footer is now generated via JavaScript -->
-   </div>
-  
+
+  <!-- ✅ Adsterra Popunder Script -->
+  <script type='text/javascript' src='//pl27340292.profitableratecpm.com/ed/1c/8b/ed1c8bbbec2483de5d7f31950e1b2414.js'></script>
+
   <!-- External JS -->
   <script src="https://app.toon-network.xyz/play.js"></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS Loaded Successfully");
+
+      // Theme toggle script
+      const themeToggleBtn = document.getElementById("theme-toggle-btn");
+      themeToggleBtn.addEventListener("click", () => {
+        document.body.classList.toggle("bg-dark");
+        document.body.classList.toggle("text-light");
+        document.body.classList.toggle("bg-light");
+        document.body.classList.toggle("text-dark");
+
+        const icon = themeToggleBtn.querySelector("i");
+        if (icon.classList.contains("fa-sun")) {
+          icon.classList.replace("fa-sun", "fa-moon");
+          themeToggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> Dark Mode';
+        } else {
+          icon.classList.replace("fa-moon", "fa-sun");
+          themeToggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> Light Mode';
+        }
+      });
     });
   </script>
 </body>
-
-    </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
+</html>
