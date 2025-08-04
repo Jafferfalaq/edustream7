@@ -57,7 +57,15 @@
         </div>
       </div>
 
-      <!-- ✅ Banner Ad (320x50) -->
+      <a id="tg_button" onclick="showLinkModal('https://t.me/ToonStreamLink_BOT')" class="btn btn-warning w-100 mb-2" style="border: none; background-color: {{ colours.create_link.background }}; color: {{ colours.create_link.color }};">
+        <i class="fa-brands fa-telegram"></i> Create Like This Link
+      </a>
+
+      <a onclick="shareButton()" class="btn btn-danger w-100 mb-3" style="border: none; background-color: {{ colours.share.background }}; color: {{ colours.share.color }};">
+        <i class="fa fa-share-alt"></i> Share Now
+      </a>
+
+      <!-- ✅ Banner Ad (320x50) under Share Now button -->
       <div class="text-center my-3" id="ad-click-wrapper" onclick="adClicked()">
         <script type="text/javascript">
           atOptions = {
@@ -71,14 +79,6 @@
         <script type="text/javascript" src="//www.highperformanceformat.com/3c8e33a2095bee9e1d8a8d4c223e01a9/invoke.js"></script>
       </div>
 
-      <a id="tg_button" onclick="showLinkModal('https://t.me/ToonStreamLink_BOT')" class="btn btn-warning w-100 mb-2" style="border: none; background-color: {{ colours.create_link.background }}; color: {{ colours.create_link.color }};">
-        <i class="fa-brands fa-telegram"></i> Create Like This Link
-      </a>
-
-      <a onclick="shareButton()" class="btn btn-danger w-100 mb-3" style="border: none; background-color: {{ colours.share.background }}; color: {{ colours.share.color }};">
-        <i class="fa fa-share-alt"></i> Share Now
-      </a>
-
       <div class="card bg-dark text-light border-secondary mb-4" style="background-color: {{ colours.file_information.background }}  !important; color: {{ colours.file_information.color }}  !important;">
         <div class="card-header border-secondary">
           <h5 class="mb-0"><i class="fa-solid fa-circle-info me-2"></i> File Information</h5>
@@ -91,12 +91,6 @@
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- ✅ Native Banner Ad -->
-      <div class="text-center my-4" onclick="adClicked()">
-        <script async="async" data-cfasync="false" src="//pl27340312.profitableratecpm.com/7b6d36ba347e4335c5b8afd0e3a0072a/invoke.js"></script>
-        <div id="container-7b6d36ba347e4335c5b8afd0e3a0072a"></div>
       </div>
 
       <div class="alert alert-warning" style="background-color: {{ colours.description.background }}; color: {{ colours.description.color }};">
@@ -144,13 +138,17 @@
       }, 3000);
     });
   </script>
-  
+
   <!-- ✅ Console log -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS Loaded Successfully");
     });
   </script>
+
+  <!-- ✅ Social Bar Script -->
+  <script type='text/javascript' src='//pl27343466.profitableratecpm.com/7d/14/19/7d14198e51fc01d97452be04a6556fdd.js'></script>
+
 </body>
 
 </html>
