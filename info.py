@@ -47,7 +47,7 @@ SHORTLINK_URL = environ.get('SHORTLINK_URL', 'cuty.io')  # Shortener site
 SHORTLINK_API = environ.get('SHORTLINK_API', 'f32ce1797fe89a6a13568cea5cc88ba3c10c256c')  # API key for shortlink
 
 # 💾 MongoDB Connection Information
-DB_URL = environ.get('DATABASE_URI', "mongodb+srv://aman:aman@cluster0p1.mongodb.net/?rites=truity&appName=Cluster0")  # MongoDB connection URI
+DB_URL = environ.get('DATABASE_URI', "mongodb+srv://Toon:ODfeWgd93Ny1y7id@cluster0.0z8kipc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # MongoDB connection URI
 DB_NAME = environ.get('DATABASE_NAME', "cluster0")  # MongoDB database name
 
 # 📸 all Media (Images)
