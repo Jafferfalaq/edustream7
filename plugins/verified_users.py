@@ -15,7 +15,7 @@ async def verified_users_list(client: Client, message: Message):
     }).to_list(length=100)
 
     if not users:
-        return await message.reply_text("❌Today is no verified?")
+        return await message.reply_text("❌Today is no verified users?")
 
     text = "✅ <b>Today Verified Users:</b>\n\n"
     for user in users:
