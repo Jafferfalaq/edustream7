@@ -28,7 +28,7 @@ BOT_USERNAME = environ.get("BOT_USERNAME", 'ToonStreamLink_BOT')  # Bot's userna
 # 🔗 Channel & Support Links
 CHANNEL = environ.get('CHANNEL', 'https://t.me/Toon_Network_Update')  # Updates channel
 SUPPORT = environ.get('SUPPORT', 'https://t.me/+CGKhh4udI1c2MjI1')  # Support group
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://t.me/')  # Verification guide link
+HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://closed-kippy-toon55-7e9ac508.koyeb.app/watch/235/AV_File_1754381467.mkv?hash=AgADBh')  # Verification guide link
 HOW_TO_OPEN = environ.get('HOW_TO_OPEN', 'https://t.me/')  # File access guide link
 
 # ✅ Feature Toggles (True/False)
