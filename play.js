@@ -96,14 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
   para.className = "mb-0";
 
   const link = document.createElement("a");
-  link.href = "tg://resolve?domain=toon_senpai";
+  link.href = "https://t.me/+Dm6PO_39e7QxODU1";
   link.target = "_blank";
   link.className = "footer-text";
 
   const icon = document.createElement("i");
   icon.className = "fa-solid fa-robot me-2";
 
-  const text = document.createTextNode("Made with by Toon Network LLC");
+  const text = document.createTextNode("Made with by Toon Stream Link!");
   const devIcon = document.createElement("i");
   devIcon.className = "fa-solid fa-laptop-code dev-icon";
 
