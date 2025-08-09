@@ -15,20 +15,20 @@ BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1002148927348'))  # File storage 
 LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1002148927348'))  # General log channel
 PREMIUM_LOGS = int(environ.get("PREMIUM_LOGS", '-1002148927348'))  # Premium user actions log
 VERIFIED_LOG = int(environ.get('VERIFIED_LOG', '-1002148927348'))  # Verified user actions log
-SUPPORT_GROUP = int(environ.get("SUPPORT_GROUP", "-1002370016695"))
+SUPPORT_GROUP = int(environ.get("SUPPORT_GROUP", "-1002717870916"))
 
 # add admin IDs 11111 2222 3333 and add auth channel IDs -100XXX -100XXX -100XXX
 ADMINS = list(map(int, environ.get('ADMINS', '5470968468').split()))  # List of admin user IDs
-AUTH_CHANNEL = list(map(int, environ.get("AUTH_CHANNEL", "-1002474577823").split()))  # Allowed channels for authorization
+AUTH_CHANNEL = list(map(int, environ.get("AUTH_CHANNEL", "-1002551213999").split()))  # Allowed channels for authorization
 
 # username add without @
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'toon_senpai')  # Owner's username
 BOT_USERNAME = environ.get("BOT_USERNAME", 'ToonStreamLink_BOT')  # Bot's username
 
 # 🔗 Channel & Support Links
-CHANNEL = environ.get('CHANNEL', 'https://t.me/Toon_Network_Update')  # Updates channel
-SUPPORT = environ.get('SUPPORT', 'https://t.me/+CGKhh4udI1c2MjI1')  # Support group
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://closed-kippy-toon55-7e9ac508.koyeb.app/watch/235/AV_File_1754381467.mkv?hash=AgADBh')  # Verification guide link
+CHANNEL = environ.get('CHANNEL', 'https://t.me/+Dm6PO_39e7QxODU1')  # Updates channel
+SUPPORT = environ.get('SUPPORT', 'https://t.me/+d80cpxqRHGJjNGU1')  # Support group
+HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://t.me/c/2551213999/6')  # Verification guide link
 HOW_TO_OPEN = environ.get('HOW_TO_OPEN', 'https://t.me/')  # File access guide link
 
 # ✅ Feature Toggles (True/False)
