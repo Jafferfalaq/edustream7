@@ -61,8 +61,8 @@ Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
 🔞 ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.
 
 📮 Hᴇʟᴘ & Sᴜᴘᴘᴏʀᴛ:
-• Uᴘᴅᴀᴛᴇꜱ: @Toon_Network_Update
-• Sᴜᴘᴘᴏʀᴛ: https://t.me/+CGKhh4udI1c2MjI1
+• Uᴘᴅᴀᴛᴇꜱ: https://t.me/+Dm6PO_39e7QxODU1
+• Sᴜᴘᴘᴏʀᴛ: https://t.me/+d80cpxqRHGJjNGU1
 
  <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/toon_senpai'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></u></i></b>"""
 
