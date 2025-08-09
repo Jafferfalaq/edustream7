@@ -23,7 +23,7 @@ AUTH_CHANNEL = list(map(int, environ.get("AUTH_CHANNEL", "-1002551213999").split
 
 # username add without @
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'toon_senpai')  # Owner's username
-BOT_USERNAME = environ.get("BOT_USERNAME", 'ToonStreamLink_BOT')  # Bot's username
+BOT_USERNAME = environ.get("BOT_USERNAME", 'ToonStreamLinkBOT')  # Bot's username
 
 # 🔗 Channel & Support Links
 CHANNEL = environ.get('CHANNEL', 'https://t.me/+Dm6PO_39e7QxODU1')  # Updates channel
