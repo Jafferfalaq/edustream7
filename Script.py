@@ -77,7 +77,7 @@ Nᴀᴍᴇ - {}</b>"""
 ║╭━━━━━━━━━━━━━━━━━━➣
 ║┣⪼🤖ᴍʏ ɴᴀᴍᴇ : {}
 ║┣⪼👦ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/toon_senpai'>Toon-Boy ᴏᴡɴᴇʀ</a>
-║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href=https://t.me/Toon_Network_Update>Toon Network</a>
+║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href='https://t.me/+Dm6PO_39e7QxODU1'>Toon Stream Link! Update</a>
 ║┣⪼⏲️ʙᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
 ║┣⪼📡Hᴏsᴛᴇᴅ ᴏɴ : ᴋᴏʏᴇʙ 
 ║┣⪼🗣️ʟᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
