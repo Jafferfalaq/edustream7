@@ -8,26 +8,26 @@ SESSION = environ.get('SESSION', 'Webavbot')  # Pyrogram client session name
 
 API_ID = int(environ.get('API_ID', '23201433'))  # Telegram API ID
 API_HASH = environ.get('API_HASH', 'd9e58b52a273bc1a9cc941e60d92beea')  # Telegram API Hash
-BOT_TOKEN = environ.get('BOT_TOKEN', '8451394336:AAFP0w4UROohA3pq6lnOMTVIStDNVgAQ_mw')  # Telegram Bot Token
+BOT_TOKEN = environ.get('BOT_TOKEN', '8215818126:AAEV0b5jHPkVp0SQHV2MAa51RlnVy1SXNdM')  # Telegram Bot Token
 
 # 👑, Channels & Logs
-BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1002148927348'))  # File storage channel
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1002148927348'))  # General log channel
-PREMIUM_LOGS = int(environ.get("PREMIUM_LOGS", '-1002148927348'))  # Premium user actions log
-VERIFIED_LOG = int(environ.get('VERIFIED_LOG', '-1002148927348'))  # Verified user actions log
-SUPPORT_GROUP = int(environ.get("SUPPORT_GROUP", "-1002717870916"))
+BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1003417222211'))  # File storage channel
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1003059682254'))  # General log channel
+PREMIUM_LOGS = int(environ.get("PREMIUM_LOGS", '-1003059682254'))  # Premium user actions log
+VERIFIED_LOG = int(environ.get('VERIFIED_LOG', '-1003059682254'))  # Verified user actions log
+SUPPORT_GROUP = int(environ.get("SUPPORT_GROUP", "-1003328607532"))
 
 # add admin IDs 11111 2222 3333 and add auth channel IDs -100XXX -100XXX -100XXX
 ADMINS = list(map(int, environ.get('ADMINS', '5470968468').split()))  # List of admin user IDs
-AUTH_CHANNEL = list(map(int, environ.get("AUTH_CHANNEL", "-1002551213999").split()))  # Allowed channels for authorization
+AUTH_CHANNEL = list(map(int, environ.get("AUTH_CHANNEL", "-1003059682254").split()))  # Allowed channels for authorization
 
 # username add without @
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'toon_senpai')  # Owner's username
-BOT_USERNAME = environ.get("BOT_USERNAME", 'ToonStreamLinkBOT')  # Bot's username
+BOT_USERNAME = environ.get("BOT_USERNAME", 'InfinityTGCloudBOT')  # Bot's username
 
 # 🔗 Channel & Support Links
-CHANNEL = environ.get('CHANNEL', 'https://t.me/+Dm6PO_39e7QxODU1')  # Updates channel
-SUPPORT = environ.get('SUPPORT', 'https://t.me/+d80cpxqRHGJjNGU1')  # Support group
+CHANNEL = environ.get('CHANNEL', 'https://t.me/+f0E-qd1lIHI2Mzk1')  # Updates channel
+SUPPORT = environ.get('SUPPORT', 'https://t.me/+ll6DxqQL1IZkZGM1')  # Support group
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://t.me/c/2551213999/6')  # Verification guide link
 HOW_TO_OPEN = environ.get('HOW_TO_OPEN', 'https://t.me/')  # File access guide link
 
@@ -47,7 +47,7 @@ SHORTLINK_URL = environ.get('SHORTLINK_URL', 'cuty.io')  # Shortener site
 SHORTLINK_API = environ.get('SHORTLINK_API', 'f32ce1797fe89a6a13568cea5cc88ba3c10c256c')  # API key for shortlink
 
 # 💾 MongoDB Connection Information
-DB_URL = environ.get('DATABASE_URI', "mongodb+srv://Toon:ODfeWgd93Ny1y7id@cluster0.0z8kipc.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")  # MongoDB connection URI
+DB_URL = environ.get('DATABASE_URI', "mongodb+srv://code9xrs_db_user:zJwdZ3zsF1xJWxtT@cluster0.9du7r3a.mongodb.net/?appName=Cluster0")  # MongoDB connection URI
 DB_NAME = environ.get('DATABASE_NAME', "cluster0")  # MongoDB database name
 
 # 📸 all Media (Images)
