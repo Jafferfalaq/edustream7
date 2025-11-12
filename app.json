@@ -1,6 +1,6 @@
 {
-  "name": "av_botz_update",
-  "description": "A Pyrogram Telegram bot to stream Telegram files to web. @bot_owner26",
+  "name": "toon_senpai",
+  "description": "A Pyrogram Telegram bot to stream Telegram files to web. @toon_senpai",
   "keywords": [
     "telegram",
     "stream",
@@ -13,7 +13,7 @@
     "media",
     "bot"
   ],
-  "repository": "https://github.com/Botsthe/AV-FILE-TO-LINK-PRO.git",
+  "repository": "https://t.me/+f0E-qd1lIHI2Mzk1",
   "success_url": "/",
   "logo": "https://i.ibb.co/v1YTMm3/icon.png",
   "env": {
@@ -63,11 +63,11 @@
     },
     "CHANNEL": {
       "description": "Public updates channel URL",
-      "value": "https://t.me/+Dm6PO_39e7QxODU1"
+      "value": "https://t.me/+f0E-qd1lIHI2Mzk1"
     },
     "SUPPORT": {
       "description": "Support group URL",
-      "value": "https://t.me/+d80cpxqRHGJjNGU1"
+      "value": "https://t.me/+ll6DxqQL1IZkZGM1"
     },
     "HOW_TO_VERIFY": {
       "description": "Link to verification guide"
