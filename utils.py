@@ -167,7 +167,7 @@ async def update_verify_status(userid, date_temp, time_temp):
 async def verify_user(bot, userid, token):
     user = await bot.get_users(int(userid))
     temp.TOKENS[user.id] = {token: True}
-    tz = pytz.timezone('Asia/Bangladesh')
+    tz = pytz.timezone('Asia/Dhaka')
     expiry = datetime.now(tz) + timedelta(seconds=VERIFY_EXPIRE)
     date_str = expiry.strftime("%Y-%m-%d")
     time_str = expiry.strftime("%H:%M:%S")
@@ -177,7 +177,7 @@ async def verify_user(bot, userid, token):
 # यह चेक करता है कि user का verification अभी भी valid है या expire हो चुका है
 async def check_verification(bot, userid):
     user = await bot.get_users(int(userid))
-    tz = pytz.timezone("Asia/Bangladesh")
+    tz = pytz.timezone("Asia/Dhaka")
     now = datetime.now(tz)
     current_time = time(now.hour, now.minute, now.second)
     today = date.today()
