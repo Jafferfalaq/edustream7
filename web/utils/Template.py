@@ -1,12 +1,12 @@
 class avbotz_template(object):
-    NAME = "Toon Stream Link! "
+    NAME = "Infinity-TG-Cloud! "
 
     DISCLAIMER = (
-        "This website only provides a service to help you play your video online without downloading. "
+        "This website only provides a service to help you play & host your video online without downloading. "
         "You can report files or videos that contain issues like copyright infringement, +18 content, violence, etc."
     )
 
-    REPORT_LINK = "https://t.me/+d80cpxqRHGJjNGU1"
+    REPORT_LINK = "https://t.me/+ll6DxqQL1IZkZGM1"
 
     COLOURS = {
         "header": {"background": "#48cffe", "color": "#ffffff"},
