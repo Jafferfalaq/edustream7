@@ -96,14 +96,14 @@ document.addEventListener("DOMContentLoaded", () => {
   para.className = "mb-0";
 
   const link = document.createElement("a");
-  link.href = "https://t.me/+Dm6PO_39e7QxODU1";
+  link.href = "https://t.me/+f0E-qd1lIHI2Mzk1";
   link.target = "_blank";
   link.className = "footer-text";
 
   const icon = document.createElement("i");
   icon.className = "fa-solid fa-robot me-2";
 
-  const text = document.createTextNode("Made with by Toon Stream Link!");
+  const text = document.createTextNode("Made with by Infinity-TG-Cloud!");
   const devIcon = document.createElement("i");
   devIcon.className = "fa-solid fa-laptop-code dev-icon";
 
