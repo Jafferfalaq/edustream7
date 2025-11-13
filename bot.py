@@ -61,7 +61,7 @@ async def start():
     temp.ME = me.id
     temp.U_NAME = me.username
     temp.B_NAME = me.first_name
-    tz = pytz.timezone('Asia/Bangladesh')
+    tz = pytz.timezone('Asia/Dhaka')
     today = date.today()
     now = datetime.now(tz)
     time = now.strftime("%H:%M:%S %p")
@@ -84,4 +84,5 @@ if __name__ == '__main__':
         loop.run_until_complete(start())
     except KeyboardInterrupt:
         logging.info('----------------------- Service Stopped -----------------------')
+
 
