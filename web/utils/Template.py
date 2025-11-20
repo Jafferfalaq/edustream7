@@ -1,5 +1,5 @@
 class avbotz_template(object):
-    NAME = "Infinity-TG-Cloud! "
+    NAME = "Infinity-Play"
 
     DISCLAIMER = (
         "This website only provides a service to help you play & host your video online without downloading. "
