@@ -5,17 +5,11 @@
   <meta charset="UTF-8" />
   <title>Infinity-TG-CloudBOT | {{file_name}}</title>
   <link rel="icon" href="https://cdn.jsdelivr.net/gh/code9xrs-hub/Infinity-TG-Cloud-Tools@main/cloud-video.png" type="image/x-icon" />
-  <meta
-    name="description"
-    content="Stream high-quality videos and movies in 1080p. Experience seamless playback with multiple player options."
-  />
+  <meta name="description" content="Stream high-quality videos and movies in 1080p. Experience seamless playback with multiple player options." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- External CSS -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600,700" rel="stylesheet" />
   
   <!-- ArtPlayer CSS -->
@@ -28,10 +22,8 @@
 <body class="bg-dark text-light">
   <div class="d-flex flex-column min-vh-100">
     <!-- Header -->
-    <header
-      class="bg-primary text-white py-2 shadow"
-      style="background-color: {{ colours.header.background }} !important; color: {{ colours.header.color }} !important"
-    >
+    <header class="bg-primary text-white py-2 shadow"
+      style="background-color: {{ colours.header.background }} !important; color: {{ colours.header.color }} !important">
       <div class="d-flex justify-content-between align-items-center container">
         <h1 class="h4 mb-0 fw-bold">{{template_ne}}</h1>
         <button id="theme-toggle-btn" class="btn btn-light theme-toggle-btn">
@@ -43,93 +35,53 @@
     <!-- Main content -->
     <main class="flex-grow-1 container py-3">
       <div class="player-wrapper mb-3">
+        <!-- ArtPlayer container -->
         <div id="artplayer-container" class="w-100"></div>
-        <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
-        <script>
-          const art = new Artplayer({
-            container: document.getElementById('artplayer-container'),
-            url: "{{file_url}}",
-            autoplay: false,
-            autoSize: true,
-            theme: '#ff4c3b',
-            pip: true,
-            mutex: true,
-            setting: true,
-            moreVideoAttr: {
-              crossOrigin: 'anonymous'
-            },
-            quality: [
-              { name: '1080p', url: '{{file_url}}' }
-              // যদি আপনার কাছে অন্যান্য কোয়ালিটি থাকে, এখানে আরও object add করতে পারেন
-            ]
-          });
-        </script>
       </div>
 
-      <div
-        class="d-flex justify-content-between mb-2 flex-wrap gap-2"
-        style="gap: 0.5rem !important;"
-      >
-        <a
-          onclick="mx_player()"
-          class="btn btn-primary flex-fill"
-          style="border: none; background-color: {{ colours.mx_player.background }}; color: {{ colours.mx_player.color }}"
-        >
+      <!-- Player buttons -->
+      <div class="d-flex justify-content-between mb-2 flex-wrap gap-2" style="gap: 0.5rem !important;">
+        <a onclick="mx_player()" class="btn btn-primary flex-fill"
+           style="border: none; background-color: {{ colours.mx_player.background }}; color: {{ colours.mx_player.color }}">
           <i class="fa fa-play"></i> <b>MX Player</b>
         </a>
-        <a
-          onclick="vlc_player()"
-          class="btn btn-primary flex-fill"
-          style="border: none; background-color: {{ colours.vlc_player.background }}; color: {{ colours.vlc_player.color }}"
-        >
+        <a onclick="vlc_player()" class="btn btn-primary flex-fill"
+           style="border: none; background-color: {{ colours.vlc_player.background }}; color: {{ colours.vlc_player.color }}">
           <i class="fa fa-play"></i> <b>VLC Player</b>
         </a>
-        <a
-          onclick="playit_player()"
-          class="btn btn-primary flex-fill"
-          style="border: none; background-color: {{ colours.playit_player.background }}; color: {{ colours.playit_player.color }}"
-        >
+        <a onclick="playit_player()" class="btn btn-primary flex-fill"
+           style="border: none; background-color: {{ colours.playit_player.background }}; color: {{ colours.playit_player.color }}">
           <i class="fa fa-play"></i> <b>Play it</b>
         </a>
       </div>
 
+      <!-- Download -->
       <div class="row g-3 mb-2">
         <div class="col-md-6">
-          <a
-            onclick="streamDownload()"
-            class="btn btn-success w-100"
-            style="border: none; background-color: {{ colours.download.background }}; color: {{ colours.download.color }}"
-          >
+          <a onclick="streamDownload()" class="btn btn-success w-100"
+             style="border: none; background-color: {{ colours.download.background }}; color: {{ colours.download.color }}">
             <i class="fa-solid fa-download me-2"></i> Download
           </a>
         </div>
       </div>
 
-      <a
-        id="tg_button"
-        onclick="showLinkModal('https://t.me/Infinity_TG_Cloud_BOT')"
-        class="btn btn-warning w-100 mb-2"
-        style="border: none; background-color: {{ colours.create_link.background }}; color: {{ colours.create_link.color }}"
-      >
+      <!-- Telegram Link -->
+      <a id="tg_button" onclick="showLinkModal('https://t.me/Infinity_TG_Cloud_BOT')" class="btn btn-warning w-100 mb-2"
+         style="border: none; background-color: {{ colours.create_link.background }}; color: {{ colours.create_link.color }}">
         <i class="fa-brands fa-telegram"></i> Create Like This Link
       </a>
 
-      <a
-        onclick="shareButton()"
-        class="btn btn-danger w-100 mb-3"
-        style="border: none; background-color: {{ colours.share.background }}; color: {{ colours.share.color }}"
-      >
+      <!-- Share -->
+      <a onclick="shareButton()" class="btn btn-danger w-100 mb-3"
+         style="border: none; background-color: {{ colours.share.background }}; color: {{ colours.share.color }}">
         <i class="fa fa-share-alt"></i> Share Now
       </a>
 
-      <div
-        class="card bg-dark text-light border-secondary mb-4"
-        style="background-color: {{ colours.file_information.background }} !important; color: {{ colours.file_information.color }} !important"
-      >
+      <!-- File Information -->
+      <div class="card bg-dark text-light border-secondary mb-4"
+           style="background-color: {{ colours.file_information.background }} !important; color: {{ colours.file_information.color }} !important">
         <div class="card-header border-secondary">
-          <h5 class="mb-0">
-            <i class="fa-solid fa-circle-info me-2"></i> File Information
-          </h5>
+          <h5 class="mb-0"><i class="fa-solid fa-circle-info me-2"></i> File Information</h5>
         </div>
         <div class="card-body">
           <div class="row">
@@ -140,13 +92,11 @@
           </div>
         </div>
       </div>
-      <div
-        class="alert alert-warning"
-        style="background-color: {{ colours.description.background }}; color: {{ colours.description.color }}"
-      >
-        <h6 class="fw-bold">
-          <i class="fa-solid fa-triangle-exclamation me-2"></i> Disclaimer
-        </h6>
+
+      <!-- Disclaimer -->
+      <div class="alert alert-warning"
+           style="background-color: {{ colours.description.background }}; color: {{ colours.description.color }}">
+        <h6 class="fw-bold"><i class="fa-solid fa-triangle-exclamation me-2"></i> Disclaimer</h6>
         <p class="mb-0">{{disclaimer}}</p>
         <div class="button-container">
           <a href="{{report_link}}" class="report">Report</a>
@@ -154,9 +104,13 @@
       </div>
     </main>
   </div>
-  <!-- External JS -->
+
+  <!-- ArtPlayer JS -->
+  <script src="https://cdn.jsdelivr.net/npm/artplayer/dist/artplayer.js"></script>
+
+  <!-- Custom JS (ArtPlayer compatible) -->
   <script src="https://cdn.jsdelivr.net/gh/code9xrs-hub/Infinity-TG-Cloud-Tools@main/play.js"></script>
-  <!-- Console log -->
+
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       console.log("JS Loaded Successfully");
@@ -164,4 +118,3 @@
   </script>
 </body>
 </html>
-
