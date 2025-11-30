@@ -12,7 +12,7 @@ BOT_TOKEN = environ.get('BOT_TOKEN', '8013623514:AAGewc3BS45gKzwJHB_zlkVdWRqO6u3
 
 # 👑, Channels & Logs
 BIN_CHANNEL = int(environ.get("BIN_CHANNEL", '-1003417222211'))  # File storage channel
-LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1003059682254'))  # General log channel
+LOG_CHANNEL = int(environ.get("LOG_CHANNEL", '-1003459227429'))  # General log channel
 PREMIUM_LOGS = int(environ.get("PREMIUM_LOGS", '-1003059682254'))  # Premium user actions log
 VERIFIED_LOG = int(environ.get('VERIFIED_LOG', '-1003059682254'))  # Verified user actions log
 SUPPORT_GROUP = int(environ.get("SUPPORT_GROUP", "-1003328607532"))
