@@ -97,9 +97,9 @@ Nᴀᴍᴇ - {}</b>"""
 
 <b><u><i>Tap To Copy Link 👇</u></i></b>
 
-<b>🖥 Stream  : </b> <code>{}</code>
+<b>🖥 Stream on Infinity-Play  : </b> <code>{}</code>
 
-<b>📥 Download & (mp4/mkv) : </b> <code>{}</code>
+<b>📥 Download & Direct : </b> <code>{}</code>
 
 <b>🚸 Nᴏᴛᴇ : LINK WON'T EXPIRE TILL I DELETE 🤡</b>"""
 
