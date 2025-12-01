@@ -28,7 +28,7 @@ BOT_USERNAME = environ.get("BOT_USERNAME", 'Infinity_TG_Cloud_BOT')  # Bot's use
 # 🔗 Channel & Support Links
 CHANNEL = environ.get('CHANNEL', 'https://t.me/+f0E-qd1lIHI2Mzk1')  # Updates channel
 SUPPORT = environ.get('SUPPORT', 'https://t.me/+ll6DxqQL1IZkZGM1')  # Support group
-HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://t.me/c/2551213999/6')  # Verification guide link
+HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://infinity-tg-cloud.onrender.com/watch/70/InfinityTGCloudBOT_1764594352.mkv?hash=AgADKB')  # Verification guide link
 HOW_TO_OPEN = environ.get('HOW_TO_OPEN', 'https://t.me/')  # File access guide link
 
 # ✅ Feature Toggles (True/False)
