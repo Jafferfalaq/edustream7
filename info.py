@@ -23,7 +23,7 @@ AUTH_CHANNEL = list(map(int, environ.get("AUTH_CHANNEL", "-1003459227429").split
 
 # username add without @
 OWNER_USERNAME = environ.get("OWNER_USERNAME", 'toon_senpai')  # Owner's username
-BOT_USERNAME = environ.get("BOT_USERNAME", 'Infinity_TG_Cloud_BOT')  # Bot's username
+BOT_USERNAME = environ.get("BOT_USERNAME", 'Infinity_TG_CloudBOT')  # Bot's username
 
 # 🔗 Channel & Support Links
 CHANNEL = environ.get('CHANNEL', 'https://t.me/+f0E-qd1lIHI2Mzk1')  # Updates channel
