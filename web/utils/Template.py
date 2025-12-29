@@ -1,12 +1,12 @@
 class avbotz_template(object):
-    NAME = "Infinity-Play"
+    NAME = "Affanoi Play"
 
     DISCLAIMER = (
         "This website only provides a service to help you play & host your video online without downloading. "
         "You can report files or videos that contain issues like copyright infringement, +18 content, violence, etc."
     )
 
-    REPORT_LINK = "https://t.me/+ll6DxqQL1IZkZGM1"
+    REPORT_LINK = "https://t.me/+KjAX1isgb3FkOTdl"
 
     COLOURS = {
         "header": {"background": "#48cffe", "color": "#ffffff"},
