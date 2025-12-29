@@ -44,7 +44,7 @@ BATCH_PROTECT_CONTENT = environ.get('BATCH_PROTECT_CONTENT', False)  # Batch fil
 
 # 🔗 Shortlink Configuration
 SHORTLINK_URL = environ.get('SHORTLINK_URL', 'cuty.io')  # Shortener site
-SHORTLINK_API = environ.get('SHORTLINK_API', 'f32ce1797fe89a6a13568cea5cc88ba3c10c256c')  # API key for shortlink
+SHORTLINK_API = environ.get('SHORTLINK_API', '466b6173c12f28780de093b8cd8be821a0cdf710')  # API key for shortlink
 
 # 💾 MongoDB Connection Information
 DB_URL = environ.get('DATABASE_URI', "mongodb+srv://affanoiaibot_db_user:up7EG4tSX3i2guZA@cluster0.u6hfauj.mongodb.net/?appName=Cluster0")  # MongoDB connection URI
