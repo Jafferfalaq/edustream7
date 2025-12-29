@@ -61,8 +61,8 @@ Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
 🔞 ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.
 
 📮 Hᴇʟᴘ & Sᴜᴘᴘᴏʀᴛ:
-• Uᴘᴅᴀᴛᴇꜱ: https://t.me/+f0E-qd1lIHI2Mzk1
-• Sᴜᴘᴘᴏʀᴛ: https://t.me/+ll6DxqQL1IZkZGM1
+• Uᴘᴅᴀᴛᴇꜱ: https://t.me/+xvNIasUcHFEzYzY1
+• Sᴜᴘᴘᴏʀᴛ: https://t.me/+KjAX1isgb3FkOTdl
 
  <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/toon_senpai'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></u></i></b>"""
 
@@ -77,7 +77,7 @@ Nᴀᴍᴇ - {}</b>"""
 ║╭━━━━━━━━━━━━━━━━━━➣
 ║┣⪼🤖ᴍʏ ɴᴀᴍᴇ : {}
 ║┣⪼👦ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/toon_senpai'>ᴀɴɪ-ʙᴏʏ ᴏᴡɴᴇʀ</a>
-║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href='https://t.me/+f0E-qd1lIHI2Mzk1'>ᴛɢ-ᴄʟᴏᴜᴅ-ᴜᴘᴅᴀᴛᴇ!</a>
+║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href='https://t.me/+xvNIasUcHFEzYzY1'>ᴄʟᴏᴜᴅ-ᴜᴘᴅᴀᴛᴇ!</a>
 ║┣⪼⏲️ʙᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
 ║┣⪼📡Hᴏsᴛᴇᴅ ᴏɴ : ʀᴇɴᴅᴇʀ 
 ║┣⪼🗣️ʟᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
@@ -135,7 +135,7 @@ Nᴀᴍᴇ - {}</b>"""
  
 ⛽️ ᴄʜᴇᴄᴋ ʏᴏᴜʀ ᴀᴄᴛɪᴠᴇ ᴘʟᴀɴ: /myplan
 
-🏷️ <a href='https://t.me/toon_senpai'>ᴘʀᴇᴍɪᴜᴍ ᴘʀᴏᴏꜰ</a>
+🏷️ <a href='https://t.me/mineheartO'>ᴘʀᴇᴍɪᴜᴍ ᴘʀᴏᴏꜰ</a>
 
 ‼️ ᴍᴜsᴛ sᴇɴᴅ sᴄʀᴇᴇɴsʜᴏᴛ ᴀғᴛᴇʀ ᴘᴀʏᴍᴇɴᴛ.
 ‼️ ɢɪᴠᴇ ᴜꜱ ꜱᴏᴍᴇᴛɪᴍᴇ ᴛᴏ ᴀᴅᴅ ʏᴏᴜ ɪɴ ᴘʀᴇᴍɪᴜᴍ ʟɪꜱᴛ.
