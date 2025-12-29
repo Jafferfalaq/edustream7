@@ -40,10 +40,19 @@
     <!-- Main content -->
     <main class="flex-grow-1 container py-3">
       <div class="player-wrapper mb-3">
-        <video id="myVideo" src="{{file_url}}" class="w-100" controls>
+        <video id="myVideo" src="{{file_url}}" class="w-100" controls crossorigin playsinline>
           Your browser does not support the video tag.
         </video>
+        <!-- Plyr JS and Initialization -->
         <script src="https://cdn.plyr.io/3.8.3/plyr.js"></script>
+        <script>
+          const player = new Plyr('#myVideo', {
+            controls: [
+              'play-large', 'play', 'progress', 'current-time', 'mute',
+              'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen'
+            ]
+          });
+        </script>
       </div>
 
       <div
@@ -112,7 +121,10 @@
       </div>
     </main>
   </div>
-  <!-- External JS -->
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- External Logic JS -->
   <script src="https://cdn.jsdelivr.net/gh/code9xrs-hub/Infinity-TG-Cloud-Tools@main/play.js"></script>
   <!-- Console log -->
   <script>
