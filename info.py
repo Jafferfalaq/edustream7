@@ -26,8 +26,8 @@ OWNER_USERNAME = environ.get("OWNER_USERNAME", 'mineheartO')  # Owner's username
 BOT_USERNAME = environ.get("BOT_USERNAME", 'affanoiupload_bot')  # Bot's username
 
 # 🔗 Channel & Support Links
-CHANNEL = environ.get('CHANNEL', 'https://t.me/+xvNIasUcHFEzYzY1')  # Updates channel
-SUPPORT = environ.get('SUPPORT', 'https://t.me/+KjAX1isgb3FkOTdl')  # Support group
+CHANNEL = environ.get('CHANNEL', 'https://t.me/+SUy4f5u0jB5lYzk9')  # Updates channel
+SUPPORT = environ.get('SUPPORT', 'https://t.me/+v3ssj9qdavVhNWQ9')  # Support group
 HOW_TO_VERIFY = environ.get('HOW_TO_VERIFY', 'https://infinity-tg-cloud.onrender.com/watch/70/InfinityTGCloudBOT_1764594352.mkv?hash=AgADKB')  # Verification guide link
 HOW_TO_OPEN = environ.get('HOW_TO_OPEN', 'https://t.me/')  # File access guide link
 
