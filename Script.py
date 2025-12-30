@@ -61,8 +61,8 @@ Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
 🔞 ᴀᴅᴜʟᴛ ᴄᴏɴᴛᴇɴᴛ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ.
 
 📮 Hᴇʟᴘ & Sᴜᴘᴘᴏʀᴛ:
-• Uᴘᴅᴀᴛᴇꜱ: https://t.me/+xvNIasUcHFEzYzY1
-• Sᴜᴘᴘᴏʀᴛ: https://t.me/+KjAX1isgb3FkOTdl
+• Uᴘᴅᴀᴛᴇꜱ: https://t.me/+SUy4f5u0jB5lYzk9
+• Sᴜᴘᴘᴏʀᴛ: https://t.me/+v3ssj9qdavVhNWQ9
 
  <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/toon_senpai'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></u></i></b>"""
 
@@ -76,8 +76,8 @@ Nᴀᴍᴇ - {}</b>"""
     ABOUT_TXT = """<b>╔══❰ {} ❱═════❍
 ║╭━━━━━━━━━━━━━━━━━━➣
 ║┣⪼🤖ᴍʏ ɴᴀᴍᴇ : {}
-║┣⪼👦ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/toon_senpai'>ᴀɴɪ-ʙᴏʏ ᴏᴡɴᴇʀ</a>
-║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href='https://t.me/+xvNIasUcHFEzYzY1'>ᴄʟᴏᴜᴅ-ᴜᴘᴅᴀᴛᴇ!</a>
+║┣⪼👦ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/toon_senpai'>ᴀɴɪ-ʙᴏʏ</a>
+║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href='https://t.me/+SUy4f5u0jB5lYzk9'>ᴄʟᴏᴜᴅ-ᴜᴘᴅᴀᴛᴇ!</a>
 ║┣⪼⏲️ʙᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
 ║┣⪼📡Hᴏsᴛᴇᴅ ᴏɴ : ʀᴇɴᴅᴇʀ 
 ║┣⪼🗣️ʟᴀɴɢᴜᴀɢᴇ : ᴘʏᴛʜᴏɴ 
@@ -97,7 +97,7 @@ Nᴀᴍᴇ - {}</b>"""
 
 <b><u><i>Tap To Copy Link 👇</u></i></b>
 
-<b>🖥 Stream on Infinity-Play  : </b> <code>{}</code>
+<b>🖥 Stream on Affanoi-Play  : </b> <code>{}</code>
 
 <b>📥 Download & Direct : </b> <code>{}</code>
 
