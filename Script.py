@@ -64,7 +64,7 @@ Cʜᴀɴɴᴇʟ Uꜱᴀɢᴇ:
 • Uᴘᴅᴀᴛᴇꜱ: https://t.me/+SUy4f5u0jB5lYzk9
 • Sᴜᴘᴘᴏʀᴛ: https://t.me/+v3ssj9qdavVhNWQ9
 
- <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/toon_senpai'>ᴅᴇᴠᴇʟᴏᴘᴇʀ</a></u></i></b>"""
+ <u><i>ʀᴇᴘᴏʀᴛ ʙᴜɢs ᴛᴏ  <a href='https://t.me/mineheartO'>Owner</a></u></i></b>"""
 
     CAPTION = """🎬 <i><a href='{}'>{}</a></i>"""
     
@@ -76,7 +76,7 @@ Nᴀᴍᴇ - {}</b>"""
     ABOUT_TXT = """<b>╔══❰ {} ❱═════❍
 ║╭━━━━━━━━━━━━━━━━━━➣
 ║┣⪼🤖ᴍʏ ɴᴀᴍᴇ : {}
-║┣⪼👦ᴅᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/toon_senpai'>ᴀɴɪ-ʙᴏʏ</a>
+║┣⪼👦Owner : <a href='https://t.me/mineheartO'>@mineheartO</a>
 ║┣⪼❣️ᴜᴘᴅᴀᴛᴇ : <a href='https://t.me/+SUy4f5u0jB5lYzk9'>ᴄʟᴏᴜᴅ-ᴜᴘᴅᴀᴛᴇ!</a>
 ║┣⪼⏲️ʙᴏᴛ ᴜᴘᴛɪᴍᴇ :- {}
 ║┣⪼📡Hᴏsᴛᴇᴅ ᴏɴ : ʀᴇɴᴅᴇʀ 
