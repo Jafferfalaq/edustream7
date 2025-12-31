@@ -170,7 +170,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.message.delete()
     elif query.data == "about":
         buttons = [[
-	    InlineKeyboardButton('💻 sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://t.me/+ll6DxqQL1IZkZGM1')
+	    InlineKeyboardButton('💻 ʙᴜʏ sᴏᴜʀᴄᴇ ᴄᴏᴅᴇ', url='https://t.me/toon_senpai')
 	],[
             InlineKeyboardButton('• ʜᴏᴍᴇ •', callback_data='start'),
 	    InlineKeyboardButton('• ᴄʟᴏsᴇ •', callback_data='close_data')
