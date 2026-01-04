@@ -23,7 +23,7 @@
       --menu-bg: #1a1f26;
       --text-color: #ffffff;
       --navbar-height: 60px;
-      --footer-height: 70px;
+      --footer-height: 80px;
     }
 
     body {
@@ -35,9 +35,8 @@
       flex-direction: column;
       overflow-x: hidden;
       margin: 0;
-      /* Padding to prevent content from hiding behind fixed bars */
       padding-top: calc(var(--navbar-height) + 15px);
-      padding-bottom: calc(var(--footer-height) + 15px);
+      padding-bottom: calc(var(--footer-height) + 20px);
     }
 
     /* Background Animation */
@@ -51,9 +50,9 @@
       pointer-events: none;
     }
 
-    /* Navbar - Shadow Transplant / Glass Effect */
+    /* Navbar */
     .navbar {
-      background: rgba(0, 0, 0, 0.3) !important; /* Transparent Shadow */
+      background: rgba(0, 0, 0, 0.3) !important;
       backdrop-filter: blur(12px); 
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -71,8 +70,7 @@
       text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
     }
 
-    .header-logo { height: 28px; width: auto; }
-    .custom-logo-icon { height: 18px; width: auto; object-fit: contain; }
+    .header-logo { height: 28px; width: auto; border-radius: 5px; }
 
     /* Dropdown Menu */
     .dropdown-menu-custom {
@@ -86,21 +84,19 @@
       top: 55px;
       display: none;
       z-index: 1050;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     .dropdown-menu-custom.show { display: block; }
     .menu-item {
       display: flex;
       align-items: center;
-      padding: 15px 20px;
+      padding: 12px 20px;
       color: #e0e0e0;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       transition: 0.3s;
     }
-    .menu-item:hover { background: rgba(255, 255, 255, 0.05); color: var(--primary-color); }
+    .menu-item:hover { background: rgba(0, 240, 255, 0.1); color: var(--primary-color); }
 
-    /* Video Player Wrapper */
+    /* Video Player */
     .player-wrapper {
       background: #000;
       border-radius: var(--card-radius);
@@ -108,83 +104,25 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       border: var(--glass-border);
       position: relative;
-      width: 100%;
     }
 
-    /* --- PLYR UI CUSTOMIZATION --- */
-    :root { 
-        --plyr-color-main: #00f0ff; 
-        --plyr-control-icon-size: 18px;
-        --plyr-range-thumb-height: 13px;
-        --plyr-range-thumb-width: 13px;
-        --plyr-range-track-height: 5px;
-    }
-    
-    .plyr--video .plyr__controls {
-      display: flex;
-      flex-wrap: wrap; 
-      padding: 10px 15px;
-      background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)) !important;
-      gap: 5px;
-    }
-    
-    /* 1. Force Progress Bar to Row 1 (Top) */
-    .plyr--video .plyr__controls .plyr__progress__container {
-      flex: 0 0 100%; 
-      order: 1;      
-      margin-bottom: 8px; 
-    }
-    
-    /* 2. Push Buttons to Row 2 (Bottom) */
-    .plyr--video .plyr__controls .plyr__controls__item { 
-        order: 2; 
-    }
-
-    /* 3. Push Settings/PIP/Fullscreen to the Right */
-    .plyr__controls__item[data-plyr="settings"] {
-        margin-left: auto; 
-    }
-
-    /* Ensure Timers are visible */
-    .plyr__time {
-        font-family: 'Courier New', monospace;
-        font-weight: 600;
-        font-size: 0.85rem;
-    }
-
-    /* WATERMARK ANIMATION */
+    /* Watermark */
     .player-watermark {
       position: absolute;
       top: 15px;
       right: 15px;
-      z-index: 20; 
+      z-index: 20;
       pointer-events: none;
       display: flex;
       align-items: center;
       gap: 8px;
       color: var(--primary-color);
-      opacity: 0;
-      font-family: 'Courier New', Courier, monospace; 
-      font-size: 0.7rem; 
+      opacity: 0.6;
+      font-size: 0.7rem;
       font-weight: bold;
-      text-transform: uppercase;
-      animation: popupEntrance 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-      animation-delay: 0.5s; 
     }
-    .player-watermark span {
-        display: inline-block;
-        overflow: hidden;
-        white-space: nowrap;
-        border-right: 2px solid var(--primary-color);
-        width: 0; 
-        animation: typing 2.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
-        animation-delay: 1.1s; 
-    }
-    @keyframes popupEntrance { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 0.5; } }
-    @keyframes typing { from { width: 0 } to { width: 100% } }
-    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-color) } }
 
-    /* Cards & Buttons */
+    /* Action Buttons */
     .glass-card {
       background: rgba(255, 255, 255, 0.05);
       backdrop-filter: blur(5px);
@@ -193,40 +131,31 @@
       padding: 15px;
       margin-top: 15px;
     }
-    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 15px; }
     .btn-outline-custom {
       background: rgba(255, 255, 255, 0.05);
-      border: 2px solid #ffffff;
-      border-radius: 15px;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
       color: #ffffff;
-      padding: 12px 5px;
+      padding: 10px 5px;
       display: flex; align-items: center; justify-content: center; gap: 8px;
-      text-decoration: none; font-size: 0.85rem; transition: 0.3s;
+      text-decoration: none; font-size: 0.8rem; transition: 0.3s;
       cursor: pointer;
     }
-    .btn-outline-custom:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--primary-color); color: var(--primary-color); }
-    .btn-full-width { grid-column: span 3; padding: 15px; }
+    .btn-outline-custom:hover { border-color: var(--primary-color); color: var(--primary-color); background: rgba(0, 240, 255, 0.05); }
+    .btn-full-width { grid-column: span 3; }
 
-    /* External Players List */
-    .external-players-container {
-      grid-column: span 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
-      max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; opacity: 0;
-    }
-    .external-players-container.show { max-height: 120px; opacity: 1; margin-top: 10px; }
-    
-    .player-btn i { font-size: 1.1rem; }
-
-    /* Footer - Shadow Transplant / Glass Effect */
-    footer { 
+    /* --- NEW PREMIUM FOOTER STYLE --- */
+    footer {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.3); /* Transparent Shadow */
-      backdrop-filter: blur(12px); 
-      padding: 15px; 
-      text-align: center; 
-      border-top: 1px solid rgba(255, 255, 255, 0.05); 
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      padding: 12px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
       z-index: 1030;
       height: var(--footer-height);
       display: flex;
@@ -234,72 +163,64 @@
       justify-content: center;
     }
 
-    /* --- MOBILE SPECIFIC FIXES --- */
+    .dev-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 20px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(0, 240, 255, 0.15);
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      text-decoration: none !important;
+    }
+
+    .dev-badge:hover {
+      background: rgba(0, 240, 255, 0.1);
+      border-color: var(--primary-color);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    .dev-avatar {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      border: 2px solid var(--primary-color);
+      object-fit: cover;
+      transition: 0.5s;
+    }
+
+    .dev-badge:hover .dev-avatar {
+      transform: rotate(360deg);
+    }
+
+    .dev-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .dev-label {
+      font-size: 0.6rem;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .dev-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
+    }
+
+    /* Mobile Tweaks */
     @media (max-width: 768px) {
-      /* 1. Reset Variables for Mobile sizing */
-      :root {
-        --plyr-control-icon-size: 20px; /* Make icons clearly visible */
-        --plyr-control-spacing: 5px;    /* Reduce gaps between buttons */
-      }
-
-      /* 2. Hide Volume Controls on Mobile to save space */
-      .plyr__volume {
-        display: none !important;
-      }
-      
-      /* 3. Ensure Play/Pause is clearly visible */
-      .plyr__controls__item.plyr__control[data-plyr="play"] {
-        display: inline-flex !important;
-      }
-
-      /* 4. Optimize Control Bar Padding & Layout */
-      .plyr--video .plyr__controls {
-        padding: 5px 8px !important;
-        gap: 2px !important;
-        justify-content: space-between; /* Spread controls evenly */
-      }
-
-      /* 5. Adjust Button Touch Targets */
-      .plyr__control {
-        padding: 6px !important; /* Smaller padding for buttons */
-      }
-
-      /* 6. Ensure Icons Scale Properly */
-      .plyr__control svg {
-        width: 1.25rem; /* Auto scale based on root REM */
-        height: 1.25rem;
-      }
-
-      /* 7. Fix Timer Display */
-      .plyr__time {
-        display: inline-block !important;
-        font-size: 11px !important; /* Readable but compact */
-        padding: 0 4px;
-        margin-left: 2px;
-      }
-      
-      /* 8. Fix Progress Bar Spacing */
-      .plyr--video .plyr__controls .plyr__progress__container {
-        margin-bottom: 5px !important; /* Tighter to the controls */
-        flex-basis: 100%;
-      }
-
-      /* 9. General UI tweaks */
-      .player-watermark {
-        font-size: 0.5rem; 
-        top: 10px;
-        right: 10px;
-      }
-      .custom-logo-icon {
-        height: 14px;
-      }
-      .navbar-brand {
-        font-size: 1rem;
-      }
-      .btn-outline-custom {
-        font-size: 0.75rem;
-        padding: 10px 2px;
-      }
+      .action-grid { grid-template-columns: repeat(3, 1fr); }
+      .btn-outline-custom { font-size: 0.7rem; }
+      .dev-badge { padding: 6px 15px; }
+      .dev-name { font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -307,7 +228,6 @@
 <body>
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Navbar Fixed Top -->
   <nav class="navbar navbar-dark fixed-top">
     <div class="container d-flex justify-content-between align-items-center">
       <a class="navbar-brand m-0" href="#">
@@ -318,7 +238,7 @@
         <i class="fa-solid fa-bars"></i>
       </button>
       <div id="customMenu" class="dropdown-menu-custom">
-        <a href="https://t.me/+SUy4f5u0jB5lYzk9" target="_blank" class="menu-item"><i class="fa-solid fa-arrows-rotate me-2"></i> Update'S</a>
+        <a href="https://t.me/+SUy4f5u0jB5lYzk9" target="_blank" class="menu-item"><i class="fa-solid fa-arrows-rotate me-2"></i> Update's</a>
         <a href="https://t.me/mineheartO" target="_blank" class="menu-item"><i class="fa-solid fa-envelope me-2"></i> Contact</a>
         <a href="https://t.me/+v3ssj9qdavVhNWQ9" target="_blank" class="menu-item"><i class="fa-solid fa-file-lines me-2"></i> Report</a>
         <a href="https://t.me/affanoiupload_bot" target="_blank" class="menu-item"><i class="fa-brands fa-telegram me-2"></i> Bot Link</a>
@@ -327,9 +247,9 @@
   </nav>
 
   <main class="container">
-    <div class="player-wrapper shadow-lg">
+    <div class="player-wrapper">
       <div class="player-watermark" id="videoWatermark">
-        <img src="https://i.ibb.co/Nn6x9Dhd/file-000000004c3071fa8a1196c3bdcf46d0.png" alt="Logo" class="custom-logo-icon">
+        <img src="https://i.ibb.co/Nn6x9Dhd/file-000000004c3071fa8a1196c3bdcf46d0.png" alt="Logo" style="height: 14px;">
         <span>{{template_ne}}</span>
       </div>
       <video id="myVideo" controls crossorigin playsinline>
@@ -338,195 +258,116 @@
     </div>
 
     <div class="glass-card">
-      <div class="fw-bold mb-3"><i class="fa-solid fa-folder-open me-2 text-info"></i> File Information</div>
+      <div class="fw-bold mb-2"><i class="fa-solid fa-folder-open me-2 text-info"></i> File Info</div>
       <div class="small mb-1"><span class="text-info">Name:</span> {{file_name}}</div>
       <div class="small"><span class="text-info">Size:</span> {{file_size}}</div>
     </div>
 
-    <div class="action-grid mt-3">
+    <div class="action-grid">
       <a onclick="copyLink()" class="btn-outline-custom"><i class="fa-regular fa-copy"></i> Copy</a>
       <a onclick="shareButton()" class="btn-outline-custom"><i class="fa-solid fa-share-nodes"></i> Share</a>
-      
-      <!-- UPDATED DOWNLOAD BUTTON: Triggers force download -->
       <a onclick="triggerDownload()" class="btn-outline-custom"><i class="fa-solid fa-download"></i> Download</a>
+      
+      <a href="https://t.me/affanoiupload_bot" class="btn-outline-custom btn-full-width"><i class="fa-brands fa-telegram me-2"></i> Create Similar Link</a>
 
-      <a href="https://t.me/affanoiupload_bot" class="btn-outline-custom btn-full-width"><i class="fa-brands fa-telegram me-2"></i> Create Like This Link</a>
-
-      <div class="btn-outline-custom btn-full-width" onclick="toggleExternalPlayers()">
-        <i class="fa-solid fa-circle-play"></i> Play in External Player <i class="fa-solid fa-chevron-down ms-2" id="chevron"></i>
+      <div class="btn-outline-custom btn-full-width" onclick="toggleExternal()">
+        <i class="fa-solid fa-circle-play"></i> Play in External Player
       </div>
-
-      <div class="external-players-container" id="playerList">
-        <a onclick="vlc_player()" class="btn-outline-custom player-btn"><i class="fa-solid fa-play" style="color: #ff8800;"></i> VLC</a>
-        <a onclick="mx_player()" class="btn-outline-custom player-btn"><i class="fa-solid fa-video" style="color: #3498db;"></i> MX Player</a>
-        <a onclick="playit_player()" class="btn-outline-custom player-btn"><i class="fa-solid fa-clapperboard" style="color: #2ecc71;"></i> PlayIt</a>
+      <div id="extPlayers" style="display: none; grid-template-columns: repeat(3, 1fr); gap: 10px; grid-column: span 3; margin-top: 10px;">
+        <a onclick="vlc_player()" class="btn-outline-custom"><i class="fa-solid fa-play text-warning"></i> VLC</a>
+        <a onclick="mx_player()" class="btn-outline-custom"><i class="fa-solid fa-video text-primary"></i> MX</a>
+        <a onclick="playit_player()" class="btn-outline-custom"><i class="fa-solid fa-clapperboard text-success"></i> PlayIt</a>
       </div>
     </div>
 
     <div class="glass-card mb-4">
-        <div class="fw-bold text-warning mb-2"><i class="fa-solid fa-triangle-exclamation me-2"></i> Disclaimer</div>
-        <p class="small text-secondary mb-0">{{disclaimer}}</p>
+        <div class="fw-bold text-warning mb-1 small"><i class="fa-solid fa-triangle-exclamation me-1"></i> Disclaimer</div>
+        <p style="font-size: 0.7rem; color: #aaa; margin: 0;">{{disclaimer}}</p>
     </div>
   </main>
 
-  <!-- Footer Fixed Bottom -->
+  <!-- Final Enhanced Footer -->
   <footer>
-    <a href="https://www.instagram.com/nova_jfrrr?igsh=MTdwM2YwNTVwNzV4cA==" target="_blank" class="text-decoration-none" style="color: var(--primary-color)">
-      <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Logo" class="custom-logo-icon me-2">
-      <span>Dev by Mr.Jaffer</span>
+    <a href="https://www.instagram.com/nova_jfrrr?igsh=MTdwM2YwNTVwNzV4cA==" target="_blank" class="dev-badge">
+      <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Dev" class="dev-avatar">
+      <div class="dev-text">
+        <span class="dev-label">Developed By</span>
+        <span class="dev-name">Mr. Jaffer</span>
+      </div>
+      <i class="fa-brands fa-instagram ms-1" style="color: #ff4081; font-size: 1.1rem;"></i>
     </a>
   </footer>
 
   <script src="https://cdn.plyr.io/3.8.3/plyr.js"></script>
   <script>
+    const player = new Plyr('#myVideo', {
+      controls: ['progress', 'play-large', 'play', 'rewind', 'fast-forward', 'current-time', 'duration', 'mute', 'volume', 'settings', 'fullscreen'],
+      seekTime: 10
+    });
+
     function toggleMenu(e) { e.stopPropagation(); document.getElementById('customMenu').classList.toggle('show'); }
     window.onclick = () => document.getElementById('customMenu').classList.remove('show');
-
-    function toggleExternalPlayers() {
-      const list = document.getElementById('playerList');
-      const chev = document.getElementById('chevron');
-      list.classList.toggle('show');
-      chev.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
+    
+    function toggleExternal() {
+      const el = document.getElementById('extPlayers');
+      el.style.display = el.style.display === 'none' ? 'grid' : 'none';
     }
 
-    // Plyr configuration: PROGRESS Top, Buttons Bottom, Seek buttons added
-    const player = new Plyr('#myVideo', {
-        controls: [
-          'progress',      // Top Row
-          'play-large',    // Center Overlay
-          'play',          // Bottom Row: Play
-          'rewind',        // Bottom Row: Rewind 10s
-          'fast-forward',  // Bottom Row: Forward 10s
-          'current-time',  
-          'duration',      
-          'mute',          
-          'volume',        
-          'settings',      // Bottom Row Right
-          'pip',           
-          'airplay', 
-          'fullscreen'     
-        ],
-        seekTime: 10,      // Set skip time to 10 seconds
-        settings: ['quality', 'speed'],
-        speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-        keyboard: { focused: true, global: true }
-    });
-
-    player.on('ready', () => {
-        const wm = document.getElementById('videoWatermark');
-        const container = document.querySelector('.plyr');
-        if(wm && container) container.appendChild(wm);
-    });
-
-    // --- Auto Landscape on Fullscreen Logic ---
-    player.on('enterfullscreen', () => {
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape').catch((error) => {
-                console.log("Orientation lock not supported or failed: " + error);
-            });
-        }
-    });
-
-    player.on('exitfullscreen', () => {
-        if (screen.orientation && screen.orientation.unlock) {
-            screen.orientation.unlock();
-        }
-    });
-
-    const fileUrl = "{{file_url}}";
-    
-    // NEW DOWNLOAD FUNCTION
     function triggerDownload() {
-        const link = document.createElement('a');
-        link.href = fileUrl;
-        link.setAttribute('download', '{{file_name}}'); // Hints browser to download
-        link.target = '_blank'; // Fallback to new tab if download is blocked
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+      const a = document.createElement('a');
+      a.href = "{{file_url}}";
+      a.download = "{{file_name}}";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
     }
-    
+
+    function copyLink() { navigator.clipboard.writeText(window.location.href); alert("Link Copied!"); }
+
     function shareButton() {
-        if (navigator.share) {
-            navigator.share({
-                title: '{{file_name}}',
-                text: 'Watch {{file_name}} online!',
-                url: window.location.href,
-            }).catch(console.error);
-        } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert("Share not supported. Link copied to clipboard!");
-        }
+      if (navigator.share) {
+        navigator.share({ title: '{{file_name}}', url: window.location.href });
+      } else { copyLink(); }
     }
 
-    function copyLink() { 
-        navigator.clipboard.writeText(window.location.href); 
-        alert("Link Copied!"); 
-    }
-
+    // External Players
+    const fileUrl = "{{file_url}}";
     function mx_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;scheme=https;end`; }
     function vlc_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;type=video/*;scheme=https;end`; }
     function playit_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.playit.videoplayer;type=video/*;scheme=https;end`; }
 
+    // Particles
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
-    let mouse = { x: null, y: null, radius: 150 };
-
     function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
-    window.addEventListener('resize', resize);
-    window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
-    resize();
+    window.onresize = resize; resize();
 
     class Particle {
       constructor() { this.reset(); }
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.8;
-        this.vy = (Math.random() - 0.5) * 0.8;
-        this.size = Math.random() * 2 + 1;
+        this.vx = (Math.random() - 0.5) * 0.5;
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 1.5;
       }
       update() {
         this.x += this.vx; this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-        if (mouse.x != null) {
-          let dx = mouse.x - this.x; let dy = mouse.y - this.y;
-          let dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < mouse.radius) { this.x += dx * 0.01; this.y += dy * 0.01; }
-        }
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
       }
       draw() {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.3)';
         ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
       }
     }
-
-    for (let i = 0; i < 90; i++) particles.push(new Particle());
-    function draw() {
+    for (let i = 0; i < 60; i++) particles.push(new Particle());
+    function anim() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach((p, i) => {
-        p.update(); p.draw();
-        for (let j = i + 1; j < particles.length; j++) {
-          let dx = p.x - particles[j].x; let dy = p.y - particles[j].y;
-          let d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 150) {
-            ctx.strokeStyle = `rgba(0, 240, 255, ${1 - d/150})`;
-            ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
-          }
-        }
-      });
-      requestAnimationFrame(draw);
+      particles.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(anim);
     }
-    draw();
+    anim();
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
