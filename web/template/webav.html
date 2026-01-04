@@ -1,3 +1,4 @@
+<!-- Dont Remove My Credit @AV_BOTz_UPDATE -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +24,7 @@
       --menu-bg: #1a1f26;
       --text-color: #ffffff;
       --navbar-height: 60px;
-      --footer-height: 75px; /* Slightly increased for better look */
+      --footer-height: 70px;
     }
 
     body {
@@ -35,6 +36,7 @@
       flex-direction: column;
       overflow-x: hidden;
       margin: 0;
+      /* Padding to prevent content from hiding behind fixed bars */
       padding-top: calc(var(--navbar-height) + 15px);
       padding-bottom: calc(var(--footer-height) + 15px);
     }
@@ -50,9 +52,9 @@
       pointer-events: none;
     }
 
-    /* Navbar */
+    /* Navbar - Shadow Transplant / Glass Effect */
     .navbar {
-      background: rgba(0, 0, 0, 0.3) !important;
+      background: rgba(0, 0, 0, 0.3) !important; /* Transparent Shadow */
       backdrop-filter: blur(12px); 
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -70,7 +72,7 @@
       text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
     }
 
-    .header-logo { height: 28px; width: auto; border-radius: 5px; }
+    .header-logo { height: 28px; width: auto; }
     .custom-logo-icon { height: 18px; width: auto; object-fit: contain; }
 
     /* Dropdown Menu */
@@ -110,7 +112,7 @@
       width: 100%;
     }
 
-    /* PLYR UI CUSTOMIZATION */
+    /* --- PLYR UI CUSTOMIZATION --- */
     :root { 
         --plyr-color-main: #00f0ff; 
         --plyr-control-icon-size: 18px;
@@ -127,15 +129,29 @@
       gap: 5px;
     }
     
+    /* 1. Force Progress Bar to Row 1 (Top) */
     .plyr--video .plyr__controls .plyr__progress__container {
       flex: 0 0 100%; 
       order: 1;      
       margin-bottom: 8px; 
     }
     
-    .plyr--video .plyr__controls .plyr__controls__item { order: 2; }
-    .plyr__controls__item[data-plyr="settings"] { margin-left: auto; }
-    .plyr__time { font-family: 'Courier New', monospace; font-weight: 600; font-size: 0.85rem; }
+    /* 2. Push Buttons to Row 2 (Bottom) */
+    .plyr--video .plyr__controls .plyr__controls__item { 
+        order: 2; 
+    }
+
+    /* 3. Push Settings/PIP/Fullscreen to the Right */
+    .plyr__controls__item[data-plyr="settings"] {
+        margin-left: auto; 
+    }
+
+    /* Ensure Timers are visible */
+    .plyr__time {
+        font-family: 'Courier New', monospace;
+        font-weight: 600;
+        font-size: 0.85rem;
+    }
 
     /* WATERMARK ANIMATION */
     .player-watermark {
@@ -192,21 +208,26 @@
     .btn-outline-custom:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--primary-color); color: var(--primary-color); }
     .btn-full-width { grid-column: span 3; padding: 15px; }
 
+    /* External Players List */
     .external-players-container {
       grid-column: span 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
       max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; opacity: 0;
     }
     .external-players-container.show { max-height: 120px; opacity: 1; margin-top: 10px; }
     
-    /* --- BETTER FOOTER STYLE --- */
+    .player-btn i { font-size: 1.1rem; }
+
+    /* Footer - Shadow Transplant / Glass Effect */
     footer { 
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(15px); 
-      border-top: 1px solid rgba(255, 255, 255, 0.1); 
+      background: rgba(0, 0, 0, 0.3); /* Transparent Shadow */
+      backdrop-filter: blur(12px); 
+      padding: 15px; 
+      text-align: center; 
+      border-top: 1px solid rgba(255, 255, 255, 0.05); 
       z-index: 1030;
       height: var(--footer-height);
       display: flex;
@@ -214,74 +235,80 @@
       justify-content: center;
     }
 
-    .dev-footer-content {
-      display: flex;
-      align-items: center;
-      padding: 8px 20px;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      transition: all 0.4s ease;
-      text-decoration: none;
-    }
-
-    .dev-footer-content:hover {
-      background: rgba(0, 240, 255, 0.08);
-      border-color: rgba(0, 240, 255, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 5px 15px rgba(0, 240, 255, 0.1);
-    }
-
-    .dev-logo {
-      height: 35px;
-      width: 35px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--primary-color);
-      margin-right: 12px;
-      transition: transform 0.5s ease;
-      box-shadow: 0 0 10px rgba(0, 240, 255, 0.2);
-    }
-
-    .dev-footer-content:hover .dev-logo {
-      transform: rotate(360deg);
-      box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
-    }
-
-    .dev-text {
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: #ffffff;
-      letter-spacing: 0.5px;
-      transition: 0.3s;
-    }
-
-    .dev-footer-content:hover .dev-text {
-      color: var(--primary-color);
-      text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
-    }
-
-    .dev-highlight {
-      color: var(--primary-color);
-      margin-left: 5px;
-    }
-
-    /* Mobile Tweaks */
+    /* --- MOBILE SPECIFIC FIXES --- */
     @media (max-width: 768px) {
-      :root { --plyr-control-icon-size: 20px; --footer-height: 70px; }
-      .plyr__volume { display: none !important; }
-      .plyr--video .plyr__controls { padding: 5px 8px !important; }
-      .dev-logo { height: 30px; width: 30px; }
-      .dev-text { font-size: 0.85rem; }
+      /* 1. Reset Variables for Mobile sizing */
+      :root {
+        --plyr-control-icon-size: 20px; /* Make icons clearly visible */
+        --plyr-control-spacing: 5px;    /* Reduce gaps between buttons */
+      }
+
+      /* 2. Hide Volume Controls on Mobile to save space */
+      .plyr__volume {
+        display: none !important;
+      }
+      
+      /* 3. Ensure Play/Pause is clearly visible */
+      .plyr__controls__item.plyr__control[data-plyr="play"] {
+        display: inline-flex !important;
+      }
+
+      /* 4. Optimize Control Bar Padding & Layout */
+      .plyr--video .plyr__controls {
+        padding: 5px 8px !important;
+        gap: 2px !important;
+        justify-content: space-between; /* Spread controls evenly */
+      }
+
+      /* 5. Adjust Button Touch Targets */
+      .plyr__control {
+        padding: 6px !important; /* Smaller padding for buttons */
+      }
+
+      /* 6. Ensure Icons Scale Properly */
+      .plyr__control svg {
+        width: 1.25rem; /* Auto scale based on root REM */
+        height: 1.25rem;
+      }
+
+      /* 7. Fix Timer Display */
+      .plyr__time {
+        display: inline-block !important;
+        font-size: 11px !important; /* Readable but compact */
+        padding: 0 4px;
+        margin-left: 2px;
+      }
+      
+      /* 8. Fix Progress Bar Spacing */
+      .plyr--video .plyr__controls .plyr__progress__container {
+        margin-bottom: 5px !important; /* Tighter to the controls */
+        flex-basis: 100%;
+      }
+
+      /* 9. General UI tweaks */
+      .player-watermark {
+        font-size: 0.5rem; 
+        top: 10px;
+        right: 10px;
+      }
+      .custom-logo-icon {
+        height: 14px;
+      }
+      .navbar-brand {
+        font-size: 1rem;
+      }
+      .btn-outline-custom {
+        font-size: 0.75rem;
+        padding: 10px 2px;
+      }
     }
   </style>
-
 </head>
 
 <body>
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Navbar -->
+  <!-- Navbar Fixed Top -->
   <nav class="navbar navbar-dark fixed-top">
     <div class="container d-flex justify-content-between align-items-center">
       <a class="navbar-brand m-0" href="#">
@@ -320,6 +347,8 @@
     <div class="action-grid mt-3">
       <a onclick="copyLink()" class="btn-outline-custom"><i class="fa-regular fa-copy"></i> Copy</a>
       <a onclick="shareButton()" class="btn-outline-custom"><i class="fa-solid fa-share-nodes"></i> Share</a>
+      
+      <!-- UPDATED DOWNLOAD BUTTON: Triggers force download -->
       <a onclick="triggerDownload()" class="btn-outline-custom"><i class="fa-solid fa-download"></i> Download</a>
 
       <a href="https://t.me/affanoiupload_bot" class="btn-outline-custom btn-full-width"><i class="fa-brands fa-telegram me-2"></i> Create Like This Link</a>
@@ -341,18 +370,15 @@
     </div>
   </main>
 
-  <!-- BETTER FOOTER SECTION -->
+  <!-- Footer Fixed Bottom -->
   <footer>
-    <a href="https://www.instagram.com/nova_jfrrr?igsh=MTdwM2YwNTVwNzV4cA==" target="_blank" class="dev-footer-content">
-      <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Dev Logo" class="dev-logo">
-      <div class="dev-text">
-        Dev by <span class="dev-highlight">Mr. Jaffer</span>
-      </div>
+    <a href="https://www.instagram.com/nova_jfrrr?igsh=MTdwM2YwNTVwNzV4cA==" target="_blank" class="text-decoration-none" style="color: var(--primary-color)">
+      <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Logo" class="custom-logo-icon me-2">
+      <span>Dev by Mr.Jaffer</span>
     </a>
   </footer>
 
   <script src="https://cdn.plyr.io/3.8.3/plyr.js"></script>
-
   <script>
     function toggleMenu(e) { e.stopPropagation(); document.getElementById('customMenu').classList.toggle('show'); }
     window.onclick = () => document.getElementById('customMenu').classList.remove('show');
@@ -364,9 +390,24 @@
       chev.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
 
+    // Plyr configuration: PROGRESS Top, Buttons Bottom, Seek buttons added
     const player = new Plyr('#myVideo', {
-        controls: ['progress', 'play-large', 'play', 'rewind', 'fast-forward', 'current-time', 'duration', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'],
-        seekTime: 10,
+        controls: [
+          'progress',      // Top Row
+          'play-large',    // Center Overlay
+          'play',          // Bottom Row: Play
+          'rewind',        // Bottom Row: Rewind 10s
+          'fast-forward',  // Bottom Row: Forward 10s
+          'current-time',  
+          'duration',      
+          'mute',          
+          'volume',        
+          'settings',      // Bottom Row Right
+          'pip',           
+          'airplay', 
+          'fullscreen'     
+        ],
+        seekTime: 10,      // Set skip time to 10 seconds
         settings: ['quality', 'speed'],
         speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
         keyboard: { focused: true, global: true }
@@ -378,9 +419,12 @@
         if(wm && container) container.appendChild(wm);
     });
 
+    // --- Auto Landscape on Fullscreen Logic ---
     player.on('enterfullscreen', () => {
         if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape').catch((error) => console.log(error));
+            screen.orientation.lock('landscape').catch((error) => {
+                console.log("Orientation lock not supported or failed: " + error);
+            });
         }
     });
 
@@ -392,11 +436,12 @@
 
     const fileUrl = "{{file_url}}";
     
+    // NEW DOWNLOAD FUNCTION
     function triggerDownload() {
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.setAttribute('download', '{{file_name}}');
-        link.target = '_blank';
+        link.setAttribute('download', '{{file_name}}'); // Hints browser to download
+        link.target = '_blank'; // Fallback to new tab if download is blocked
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -404,14 +449,21 @@
     
     function shareButton() {
         if (navigator.share) {
-            navigator.share({ title: '{{file_name}}', text: 'Watch {{file_name}} online!', url: window.location.href }).catch(console.error);
+            navigator.share({
+                title: '{{file_name}}',
+                text: 'Watch {{file_name}} online!',
+                url: window.location.href,
+            }).catch(console.error);
         } else {
             navigator.clipboard.writeText(window.location.href);
-            alert("Link copied to clipboard!");
+            alert("Share not supported. Link copied to clipboard!");
         }
     }
 
-    function copyLink() { navigator.clipboard.writeText(window.location.href); alert("Link Copied!"); }
+    function copyLink() { 
+        navigator.clipboard.writeText(window.location.href); 
+        alert("Link Copied!"); 
+    }
 
     function mx_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;scheme=https;end`; }
     function vlc_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;type=video/*;scheme=https;end`; }
@@ -472,3 +524,10 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
