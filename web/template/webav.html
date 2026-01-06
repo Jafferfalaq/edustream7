@@ -1,3 +1,5 @@
+--- START OF FILE webav (2).html ---
+
 <!-- Dont Remove My Credit @AV_BOTz_UPDATE -->
 <!DOCTYPE html>
 <html lang="en">
@@ -9,6 +11,7 @@
   <link rel="icon" href="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" type="image/x-icon" />
   <meta name="description" content="Stream high-quality videos and movies in 1080p. Experience seamless playback with multiple player options." />
 
+  <!-- Preload and Styles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.plyr.io/3.8.3/plyr.css" />
@@ -36,7 +39,6 @@
       flex-direction: column;
       overflow-x: hidden;
       margin: 0;
-      /* Padding to prevent content from hiding behind fixed bars */
       padding-top: calc(var(--navbar-height) + 15px);
       padding-bottom: calc(var(--footer-height) + 15px);
     }
@@ -52,9 +54,9 @@
       pointer-events: none;
     }
 
-    /* Navbar - Shadow Transplant / Glass Effect */
+    /* Navbar Glass Effect */
     .navbar {
-      background: rgba(0, 0, 0, 0.3) !important; /* Transparent Shadow */
+      background: rgba(0, 0, 0, 0.3) !important; 
       backdrop-filter: blur(12px); 
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
       box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -112,13 +114,12 @@
       width: 100%;
     }
 
-    /* --- PLYR UI CUSTOMIZATION --- */
+    /* PLYR CUSTOMIZATION */
     :root { 
         --plyr-color-main: #00f0ff; 
-        --plyr-control-icon-size: 18px;
-        --plyr-range-thumb-height: 13px;
-        --plyr-range-thumb-width: 13px;
-        --plyr-range-track-height: 5px;
+        --plyr-video-background: #000;
+        --plyr-menu-background: rgba(26, 31, 38, 0.95);
+        --plyr-menu-color: #fff;
     }
     
     .plyr--video .plyr__controls {
@@ -129,29 +130,27 @@
       gap: 5px;
     }
     
-    /* 1. Force Progress Bar to Row 1 (Top) */
     .plyr--video .plyr__controls .plyr__progress__container {
       flex: 0 0 100%; 
       order: 1;      
       margin-bottom: 8px; 
     }
     
-    /* 2. Push Buttons to Row 2 (Bottom) */
-    .plyr--video .plyr__controls .plyr__controls__item { 
-        order: 2; 
-    }
+    .plyr--video .plyr__controls .plyr__controls__item { order: 2; }
+    .plyr__controls__item[data-plyr="settings"] { margin-left: auto; }
 
-    /* 3. Push Settings/PIP/Fullscreen to the Right */
-    .plyr__controls__item[data-plyr="settings"] {
-        margin-left: auto; 
+    /* Loading Spinner */
+    #loading-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: opacity 0.5s;
     }
-
-    /* Ensure Timers are visible */
-    .plyr__time {
-        font-family: 'Courier New', monospace;
-        font-weight: 600;
-        font-size: 0.85rem;
-    }
+    .spinner-border { color: var(--primary-color); width: 3rem; height: 3rem; }
 
     /* WATERMARK ANIMATION */
     .player-watermark {
@@ -208,99 +207,29 @@
     .btn-outline-custom:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--primary-color); color: var(--primary-color); }
     .btn-full-width { grid-column: span 3; padding: 15px; }
 
-    /* External Players List */
     .external-players-container {
       grid-column: span 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
       max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; opacity: 0;
     }
     .external-players-container.show { max-height: 120px; opacity: 1; margin-top: 10px; }
     
-    .player-btn i { font-size: 1.1rem; }
-
-    /* Footer - Shadow Transplant / Glass Effect */
     footer { 
       position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.3); /* Transparent Shadow */
+      bottom: 0; left: 0; width: 100%;
+      background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(12px); 
       padding: 15px; 
       text-align: center; 
       border-top: 1px solid rgba(255, 255, 255, 0.05); 
       z-index: 1030;
       height: var(--footer-height);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
 
-    /* --- MOBILE SPECIFIC FIXES --- */
     @media (max-width: 768px) {
-      /* 1. Reset Variables for Mobile sizing */
-      :root {
-        --plyr-control-icon-size: 20px; /* Make icons clearly visible */
-        --plyr-control-spacing: 5px;    /* Reduce gaps between buttons */
-      }
-
-      /* 2. Hide Volume Controls on Mobile to save space */
-      .plyr__volume {
-        display: none !important;
-      }
-      
-      /* 3. Ensure Play/Pause is clearly visible */
-      .plyr__controls__item.plyr__control[data-plyr="play"] {
-        display: inline-flex !important;
-      }
-
-      /* 4. Optimize Control Bar Padding & Layout */
-      .plyr--video .plyr__controls {
-        padding: 5px 8px !important;
-        gap: 2px !important;
-        justify-content: space-between; /* Spread controls evenly */
-      }
-
-      /* 5. Adjust Button Touch Targets */
-      .plyr__control {
-        padding: 6px !important; /* Smaller padding for buttons */
-      }
-
-      /* 6. Ensure Icons Scale Properly */
-      .plyr__control svg {
-        width: 1.25rem; /* Auto scale based on root REM */
-        height: 1.25rem;
-      }
-
-      /* 7. Fix Timer Display */
-      .plyr__time {
-        display: inline-block !important;
-        font-size: 11px !important; /* Readable but compact */
-        padding: 0 4px;
-        margin-left: 2px;
-      }
-      
-      /* 8. Fix Progress Bar Spacing */
-      .plyr--video .plyr__controls .plyr__progress__container {
-        margin-bottom: 5px !important; /* Tighter to the controls */
-        flex-basis: 100%;
-      }
-
-      /* 9. General UI tweaks */
-      .player-watermark {
-        font-size: 0.5rem; 
-        top: 10px;
-        right: 10px;
-      }
-      .custom-logo-icon {
-        height: 14px;
-      }
-      .navbar-brand {
-        font-size: 1rem;
-      }
-      .btn-outline-custom {
-        font-size: 0.75rem;
-        padding: 10px 2px;
-      }
+      .plyr__volume { display: none !important; }
+      .plyr--video .plyr__controls { padding: 5px 8px !important; }
+      .btn-outline-custom { font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -308,7 +237,6 @@
 <body>
   <canvas id="particle-canvas"></canvas>
 
-  <!-- Navbar Fixed Top -->
   <nav class="navbar navbar-dark fixed-top">
     <div class="container d-flex justify-content-between align-items-center">
       <a class="navbar-brand m-0" href="#">
@@ -329,26 +257,29 @@
 
   <main class="container">
     <div class="player-wrapper shadow-lg">
+      <div id="loading-overlay">
+        <div class="spinner-border" role="status"></div>
+      </div>
+      
       <div class="player-watermark" id="videoWatermark">
         <img src="https://i.ibb.co/Nn6x9Dhd/file-000000004c3071fa8a1196c3bdcf46d0.png" alt="Logo" class="custom-logo-icon">
         <span>{{template_ne}}</span>
       </div>
-      <video id="myVideo" controls crossorigin playsinline>
-        <source src="{{file_url}}" type="video/mp4" />
-      </video>
+
+      <!-- Video Element without src, handled by JS -->
+      <video id="myVideo" crossorigin playsinline controls></video>
     </div>
 
     <div class="glass-card">
       <div class="fw-bold mb-3"><i class="fa-solid fa-folder-open me-2 text-info"></i> File Information</div>
       <div class="small mb-1"><span class="text-info">Name:</span> {{file_name}}</div>
-      <div class="small"><span class="text-info">Size:</span> {{file_size}}</div>
+      <div class="small mb-1"><span class="text-info">Size:</span> {{file_size}}</div>
+      <div class="small"><span class="text-info">Type:</span> <span id="streamType">Detecting...</span></div>
     </div>
 
     <div class="action-grid mt-3">
       <a onclick="copyLink()" class="btn-outline-custom"><i class="fa-regular fa-copy"></i> Copy</a>
       <a onclick="shareButton()" class="btn-outline-custom"><i class="fa-solid fa-share-nodes"></i> Share</a>
-      
-      <!-- UPDATED DOWNLOAD BUTTON: Triggers force download -->
       <a onclick="triggerDownload()" class="btn-outline-custom"><i class="fa-solid fa-download"></i> Download</a>
 
       <a href="https://t.me/affanoiupload_bot" class="btn-outline-custom btn-full-width"><i class="fa-brands fa-telegram me-2"></i> Create Like This Link</a>
@@ -370,7 +301,6 @@
     </div>
   </main>
 
-  <!-- Footer Fixed Bottom -->
   <footer>
     <a href="https://www.instagram.com/nova_jfrrr?igsh=MTdwM2YwNTVwNzV4cA==" target="_blank" class="text-decoration-none" style="color: var(--primary-color)">
       <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Logo" class="custom-logo-icon me-2">
@@ -378,8 +308,72 @@
     </a>
   </footer>
 
+  <!-- Scripts: HLS.js for m3u8 and Plyr for UI -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.8.3/plyr.js"></script>
+
   <script>
+    const fileUrl = "{{file_url}}";
+    const fileName = "{{file_name}}";
+    const video = document.getElementById('myVideo');
+    const loadingOverlay = document.getElementById('loading-overlay');
+    
+    // 1. Initialize Plyr
+    const player = new Plyr(video, {
+      controls: ['progress', 'play-large', 'play', 'rewind', 'fast-forward', 'current-time', 'duration', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'],
+      seekTime: 10,
+      settings: ['quality', 'speed', 'caption'],
+      speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+      quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] }
+    });
+
+    // 2. Handle HLS (m3u8) or MP4
+    if (fileUrl.includes('.m3u8')) {
+      document.getElementById('streamType').innerText = "HLS Stream (.m3u8)";
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(fileUrl);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          // Add quality options from manifest
+          const availableQualities = hls.levels.map((l) => l.height);
+          player.config.quality = {
+            default: availableQualities[0],
+            options: availableQualities,
+            forced: true,
+            onChange: (e) => updateQuality(e),
+          };
+          loadingOverlay.style.opacity = '0';
+          setTimeout(() => loadingOverlay.style.display = 'none', 500);
+        });
+        
+        window.hls = hls; // Export for quality change function
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Fallback for Safari
+        video.src = fileUrl;
+        loadingOverlay.style.display = 'none';
+      }
+    } else {
+      // Direct MP4 Source
+      document.getElementById('streamType').innerText = "Direct MP4 Video";
+      video.src = fileUrl;
+      video.onloadedmetadata = () => {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.style.display = 'none', 500);
+      };
+    }
+
+    function updateQuality(newQuality) {
+      if (window.hls) {
+        window.hls.levels.forEach((level, levelIndex) => {
+          if (level.height === newQuality) {
+            window.hls.currentLevel = levelIndex;
+          }
+        });
+      }
+    }
+
+    // --- Original UI Functions ---
     function toggleMenu(e) { e.stopPropagation(); document.getElementById('customMenu').classList.toggle('show'); }
     window.onclick = () => document.getElementById('customMenu').classList.remove('show');
 
@@ -390,58 +384,23 @@
       chev.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
 
-    // Plyr configuration: PROGRESS Top, Buttons Bottom, Seek buttons added
-    const player = new Plyr('#myVideo', {
-        controls: [
-          'progress',      // Top Row
-          'play-large',    // Center Overlay
-          'play',          // Bottom Row: Play
-          'rewind',        // Bottom Row: Rewind 10s
-          'fast-forward',  // Bottom Row: Forward 10s
-          'current-time',  
-          'duration',      
-          'mute',          
-          'volume',        
-          'settings',      // Bottom Row Right
-          'pip',           
-          'airplay', 
-          'fullscreen'     
-        ],
-        seekTime: 10,      // Set skip time to 10 seconds
-        settings: ['quality', 'speed'],
-        speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-        keyboard: { focused: true, global: true }
-    });
-
     player.on('ready', () => {
         const wm = document.getElementById('videoWatermark');
         const container = document.querySelector('.plyr');
         if(wm && container) container.appendChild(wm);
     });
 
-    // --- Auto Landscape on Fullscreen Logic ---
     player.on('enterfullscreen', () => {
         if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape').catch((error) => {
-                console.log("Orientation lock not supported or failed: " + error);
-            });
+            screen.orientation.lock('landscape').catch(() => {});
         }
     });
 
-    player.on('exitfullscreen', () => {
-        if (screen.orientation && screen.orientation.unlock) {
-            screen.orientation.unlock();
-        }
-    });
-
-    const fileUrl = "{{file_url}}";
-    
-    // NEW DOWNLOAD FUNCTION
     function triggerDownload() {
         const link = document.createElement('a');
         link.href = fileUrl;
-        link.setAttribute('download', '{{file_name}}'); // Hints browser to download
-        link.target = '_blank'; // Fallback to new tab if download is blocked
+        link.setAttribute('download', fileName);
+        link.target = '_blank';
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -449,14 +408,9 @@
     
     function shareButton() {
         if (navigator.share) {
-            navigator.share({
-                title: '{{file_name}}',
-                text: 'Watch {{file_name}} online!',
-                url: window.location.href,
-            }).catch(console.error);
+            navigator.share({ title: fileName, url: window.location.href }).catch(console.error);
         } else {
-            navigator.clipboard.writeText(window.location.href);
-            alert("Share not supported. Link copied to clipboard!");
+            copyLink();
         }
     }
 
@@ -465,10 +419,12 @@
         alert("Link Copied!"); 
     }
 
+    // --- Intent Links for External Players ---
     function mx_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;scheme=https;end`; }
     function vlc_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;type=video/*;scheme=https;end`; }
     function playit_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.playit.videoplayer;type=video/*;scheme=https;end`; }
 
+    // --- Enhanced Particle Engine ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -523,11 +479,4 @@
     draw();
   </script>
 </body>
-</html>
-
-
-
-
-
-
-
+                                                                                  </html>
