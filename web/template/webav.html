@@ -1,5 +1,4 @@
-<!--- START OF FILE webav (2).html ---
-
+<!--developed by Jaffer--!> @mineheartO
 <!-- Dont Remove My Credit @AV_BOTz_UPDATE -->
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +20,10 @@
     :root {
       --primary-color: #00f0ff;
       --accent-blue: #3498db;
-      --bg-black: #050505;
+      --bg-black: #000000;
       --glass-border: 1px solid rgba(255, 255, 255, 0.1);
-      --card-radius: 12px;
+      --card-radius: 16px;
+      --menu-bg: #1a1f26;
       --text-color: #ffffff;
       --navbar-height: 60px;
       --footer-height: 70px;
@@ -38,166 +38,197 @@
       flex-direction: column;
       overflow-x: hidden;
       margin: 0;
-      padding-top: calc(var(--navbar-height) + 10px);
-      padding-bottom: calc(var(--footer-height) + 10px);
+      padding-top: calc(var(--navbar-height) + 15px);
+      padding-bottom: calc(var(--footer-height) + 15px);
     }
 
+    /* Background Animation */
     #particle-canvas {
       position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      z-index: -1; pointer-events: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
     }
 
+    /* Navbar Glass Effect */
     .navbar {
-      background: rgba(0, 0, 0, 0.7) !important; 
-      backdrop-filter: blur(15px); 
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(0, 0, 0, 0.3) !important; 
+      backdrop-filter: blur(12px); 
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      z-index: 1030;
       height: var(--navbar-height);
     }
 
     .navbar-brand {
       color: var(--primary-color) !important;
       font-weight: 600;
-      font-size: 1.1rem;
-      display: flex; align-items: center; gap: 8px;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
     }
 
-    .header-logo { height: 30px; width: auto; border-radius: 50%; }
+    .header-logo { height: 28px; width: auto; }
+    .custom-logo-icon { height: 18px; width: auto; object-fit: contain; }
 
-    /* YouTube Style Player Wrapper */
-    .player-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      width: 100%;
+    /* Dropdown Menu */
+    .dropdown-menu-custom {
+      background-color: rgba(26, 31, 38, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      min-width: 220px;
+      position: absolute;
+      right: 10px;
+      top: 55px;
+      display: none;
+      z-index: 1050;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
+    .dropdown-menu-custom.show { display: block; }
+    .menu-item {
+      display: flex;
+      align-items: center;
+      padding: 15px 20px;
+      color: #e0e0e0;
+      text-decoration: none;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      transition: 0.3s;
+    }
+    .menu-item:hover { background: rgba(255, 255, 255, 0.05); color: var(--primary-color); }
 
+    /* Video Player Wrapper */
     .player-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9; /* YouTube Ratio */
       background: #000;
       border-radius: var(--card-radius);
       overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
       border: var(--glass-border);
+      position: relative;
+      width: 100%;
     }
 
-    video { width: 100%; height: 100%; object-fit: contain; }
-
-    /* Customizing Plyr for YouTube Look */
-    .plyr--video {
-      height: 100%;
-      --plyr-color-main: var(--primary-color);
+    /* PLYR CUSTOMIZATION */
+    :root { 
+        --plyr-color-main: #00f0ff; 
+        --plyr-video-background: #000;
+        --plyr-menu-background: rgba(26, 31, 38, 0.95);
+        --plyr-menu-color: #fff;
     }
+    
+    .plyr--video .plyr__controls {
+      display: flex;
+      flex-wrap: wrap; 
+      padding: 10px 15px;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.9)) !important;
+      gap: 5px;
+    }
+    
+    .plyr--video .plyr__controls .plyr__progress__container {
+      flex: 0 0 100%; 
+      order: 1;      
+      margin-bottom: 8px; 
+    }
+    
+    .plyr--video .plyr__controls .plyr__controls__item { order: 2; }
+    .plyr__controls__item[data-plyr="settings"] { margin-left: auto; }
 
-    .plyr__control--overlaid { background: rgba(0, 240, 255, 0.2) !important; }
+    /* Loading Spinner */
+    #loading-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+      transition: opacity 0.5s;
+    }
+    .spinner-border { color: var(--primary-color); width: 3rem; height: 3rem; }
 
-    /* Watermark */
+    /* WATERMARK ANIMATION */
     .player-watermark {
       position: absolute;
-      top: 15px; right: 15px;
-      z-index: 10;
-      display: flex; align-items: center; gap: 6px;
-      color: var(--primary-color);
-      font-size: 0.75rem;
-      font-weight: bold;
-      opacity: 0.7;
+      top: 15px;
+      right: 15px;
+      z-index: 20; 
       pointer-events: none;
-      text-shadow: 0 0 5px rgba(0,0,0,0.8);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-color);
+      opacity: 0;
+      font-family: 'Courier New', Courier, monospace; 
+      font-size: 0.7rem; 
+      font-weight: bold;
+      text-transform: uppercase;
+      animation: popupEntrance 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+      animation-delay: 0.5s; 
     }
-
-    /* Info Section */
-    .video-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-top: 15px;
-      color: #fff;
-      line-height: 1.4;
+    .player-watermark span {
+        display: inline-block;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 2px solid var(--primary-color);
+        width: 0; 
+        animation: typing 2.5s steps(30, end) forwards, blink-caret 0.75s step-end infinite;
+        animation-delay: 1.1s; 
     }
+    @keyframes popupEntrance { 0% { transform: scale(0); opacity: 0; } 100% { transform: scale(1); opacity: 0.5; } }
+    @keyframes typing { from { width: 0 } to { width: 100% } }
+    @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary-color) } }
 
+    /* Cards & Buttons */
     .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       border-radius: 12px;
       padding: 15px;
       margin-top: 15px;
     }
-
-    .action-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-top: 15px;
-    }
-
-    .btn-custom {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 50px; /* Pill shape */
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: 0.3s;
-      cursor: pointer;
+    .action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px; }
+    .btn-outline-custom {
+      background: rgba(255, 255, 255, 0.05);
+      border: 2px solid #ffffff;
+      border-radius: 15px;
+      color: #ffffff;
+      padding: 12px 5px;
       display: flex; align-items: center; justify-content: center; gap: 8px;
+      text-decoration: none; font-size: 0.85rem; transition: 0.3s;
+      cursor: pointer;
     }
-
-    .btn-custom:hover {
-      background: var(--primary-color);
-      color: #000;
-      border-color: var(--primary-color);
-    }
-
-    .btn-full { grid-column: span 3; }
+    .btn-outline-custom:hover { background: rgba(0, 240, 255, 0.1); border-color: var(--primary-color); color: var(--primary-color); }
+    .btn-full-width { grid-column: span 3; padding: 15px; }
 
     .external-players-container {
-      grid-column: span 3;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      max-height: 0;
-      overflow: hidden;
-      transition: 0.4s ease;
+      grid-column: span 3; display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      max-height: 0; overflow: hidden; transition: 0.5s ease-in-out; opacity: 0;
     }
-
-    .external-players-container.show { max-height: 100px; margin-top: 10px; }
-
-    #loading-overlay {
-      position: absolute;
-      inset: 0;
-      background: #000;
-      display: flex; justify-content: center; align-items: center;
-      z-index: 100;
-    }
-
-    .dropdown-menu-custom {
-      background: rgba(20, 20, 20, 0.95);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      border: var(--glass-border);
-      position: absolute; right: 15px; top: 65px;
-      display: none; min-width: 200px; z-index: 2000;
-    }
-    .dropdown-menu-custom.show { display: block; }
-    .menu-item {
-      padding: 12px 20px; color: #fff; text-decoration: none;
-      display: flex; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-
-    footer {
+    .external-players-container.show { max-height: 120px; opacity: 1; margin-top: 10px; }
+    
+    footer { 
+      position: fixed;
+      bottom: 0; left: 0; width: 100%;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px); 
+      padding: 15px; 
+      text-align: center; 
+      border-top: 1px solid rgba(255, 255, 255, 0.05); 
+      z-index: 1030;
       height: var(--footer-height);
-      display: flex; justify-content: center; align-items: center;
-      background: rgba(0,0,0,0.5); backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      position: fixed; bottom: 0; width: 100%;
+      display: flex; align-items: center; justify-content: center;
     }
 
     @media (max-width: 768px) {
-      .video-title { font-size: 1.1rem; }
-      .action-grid { grid-template-columns: repeat(3, 1fr); }
+      .plyr__volume { display: none !important; }
+      .plyr--video .plyr__controls { padding: 5px 8px !important; }
+      .btn-outline-custom { font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -207,79 +238,76 @@
 
   <nav class="navbar navbar-dark fixed-top">
     <div class="container d-flex justify-content-between align-items-center">
-      <a class="navbar-brand" href="#">
-        <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" class="header-logo" alt="Logo">
-        <span>{{template_ne}}</span>
+      <a class="navbar-brand m-0" href="#">
+        <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Logo" class="header-logo">
+        {{template_ne}}
       </a>
-      <button class="navbar-toggler" style="border:none" onclick="toggleMenu(event)">
-        <i class="fa-solid fa-bars-staggered"></i>
+      <button class="navbar-toggler" type="button" onclick="toggleMenu(event)">
+        <i class="fa-solid fa-bars"></i>
       </button>
       <div id="customMenu" class="dropdown-menu-custom">
-        <a href="https://t.me/+SUy4f5u0jB5lYzk9" class="menu-item"><i class="fa-solid fa-arrows-rotate me-2"></i> Update'S</a>
-        <a href="https://t.me/mineheartO" class="menu-item"><i class="fa-solid fa-envelope me-2"></i> Contact</a>
-        <a href="https://t.me/+v3ssj9qdavVhNWQ9" class="menu-item"><i class="fa-solid fa-file-lines me-2"></i> Report</a>
-        <a href="https://t.me/affanoiupload_bot" class="menu-item"><i class="fa-brands fa-telegram me-2"></i> Bot Link</a>
+        <a href="https://t.me/+SUy4f5u0jB5lYzk9" target="_blank" class="menu-item"><i class="fa-solid fa-arrows-rotate me-2"></i> Update'S</a>
+        <a href="https://t.me/mineheartO" target="_blank" class="menu-item"><i class="fa-solid fa-envelope me-2"></i> Contact</a>
+        <a href="https://t.me/+v3ssj9qdavVhNWQ9" target="_blank" class="menu-item"><i class="fa-solid fa-file-lines me-2"></i> Report</a>
+        <a href="https://t.me/affanoiupload_bot" target="_blank" class="menu-item"><i class="fa-brands fa-telegram me-2"></i> Bot Link</a>
       </div>
     </div>
   </nav>
 
-  <main class="container mt-2">
-    <div class="player-container">
-      <div class="player-wrapper">
-        <div id="loading-overlay">
-          <div class="spinner-border text-info" role="status"></div>
-        </div>
-        
-        <div class="player-watermark">
-          <img src="https://i.ibb.co/Nn6x9Dhd/file-000000004c3071fa8a1196c3bdcf46d0.png" height="14" alt="">
-          <span>{{template_ne}}</span>
-        </div>
-
-        <video id="myVideo" crossorigin playsinline controls></video>
+  <main class="container">
+    <div class="player-wrapper shadow-lg">
+      <div id="loading-overlay">
+        <div class="spinner-border" role="status"></div>
+      </div>
+      
+      <div class="player-watermark" id="videoWatermark">
+        <img src="https://i.ibb.co/Nn6x9Dhd/file-000000004c3071fa8a1196c3bdcf46d0.png" alt="Logo" class="custom-logo-icon">
+        <span>{{template_ne}}</span>
       </div>
 
-      <div class="video-title">{{file_name}}</div>
+      <!-- Video Element without src, handled by JS -->
+      <video id="myVideo" crossorigin playsinline controls></video>
+    </div>
 
-      <div class="action-grid">
-        <div onclick="copyLink()" class="btn-custom"><i class="fa-regular fa-copy"></i> Copy</div>
-        <div onclick="shareButton()" class="btn-custom"><i class="fa-solid fa-share-nodes"></i> Share</div>
-        <div onclick="triggerDownload()" class="btn-custom"><i class="fa-solid fa-download"></i> Save</div>
-        
-        <a href="https://t.me/affanoiupload_bot" class="btn-custom btn-full">
-            <i class="fa-brands fa-telegram"></i> Make Your Own Link
-        </a>
+    <div class="glass-card">
+      <div class="fw-bold mb-3"><i class="fa-solid fa-folder-open me-2 text-info"></i> File Information</div>
+      <div class="small mb-1"><span class="text-info">Name:</span> {{file_name}}</div>
+      <div class="small mb-1"><span class="text-info">Size:</span> {{file_size}}</div>
+      <div class="small"><span class="text-info">Type:</span> <span id="streamType">Detecting...</span></div>
+    </div>
 
-        <div class="btn-custom btn-full" onclick="toggleExternalPlayers()">
-          <i class="fa-solid fa-play-circle"></i> Open in External Player <i class="fa-solid fa-chevron-down ms-1" id="chevron"></i>
-        </div>
+    <div class="action-grid mt-3">
+      <a onclick="copyLink()" class="btn-outline-custom"><i class="fa-regular fa-copy"></i> Copy</a>
+      <a onclick="shareButton()" class="btn-outline-custom"><i class="fa-solid fa-share-nodes"></i> Share</a>
+      <a onclick="triggerDownload()" class="btn-outline-custom"><i class="fa-solid fa-download"></i> Download</a>
 
-        <div class="external-players-container" id="playerList">
-          <div onclick="vlc_player()" class="btn-custom"><i class="fa-solid fa-play text-warning"></i> VLC</div>
-          <div onclick="mx_player()" class="btn-custom"><i class="fa-solid fa-video text-primary"></i> MX</div>
-          <div onclick="playit_player()" class="btn-custom"><i class="fa-solid fa-clapperboard text-success"></i> PlayIt</div>
-        </div>
+      <a href="https://t.me/affanoiupload_bot" class="btn-outline-custom btn-full-width"><i class="fa-brands fa-telegram me-2"></i> Create Like This Link</a>
+
+      <div class="btn-outline-custom btn-full-width" onclick="toggleExternalPlayers()">
+        <i class="fa-solid fa-circle-play"></i> Play in External Player <i class="fa-solid fa-chevron-down ms-2" id="chevron"></i>
       </div>
 
-      <div class="glass-card">
-        <div class="fw-bold mb-2 text-info small"><i class="fa-solid fa-circle-info me-1"></i> VIDEO DETAILS</div>
-        <div class="small opacity-75">Size: {{file_size}}</div>
-        <div class="small opacity-75">Format: <span id="streamType">Detecting...</span></div>
+      <div class="external-players-container" id="playerList">
+        <a onclick="vlc_player()" class="btn-outline-custom player-btn"><i class="fa-solid fa-play" style="color: #ff8800;"></i> VLC</a>
+        <a onclick="mx_player()" class="btn-outline-custom player-btn"><i class="fa-solid fa-video" style="color: #3498db;"></i> MX Player</a>
+        <a onclick="playit_player()" class="btn-outline-custom player-btn"><i class="fa-solid fa-clapperboard" style="color: #2ecc71;"></i> PlayIt</a>
       </div>
+    </div>
 
-      <div class="glass-card mb-5">
-          <div class="fw-bold text-warning mb-1 small"><i class="fa-solid fa-shield-halved me-1"></i> DISCLAIMER</div>
-          <p class="small opacity-50 m-0" style="font-size: 0.75rem;">{{disclaimer}}</p>
-      </div>
+    <div class="glass-card mb-4">
+        <div class="fw-bold text-warning mb-2"><i class="fa-solid fa-triangle-exclamation me-2"></i> Disclaimer</div>
+        <p class="small text-secondary mb-0">{{disclaimer}}</p>
     </div>
   </main>
 
   <footer>
     <a href="https://www.instagram.com/nova_jfrrr?igsh=MTdwM2YwNTVwNzV4cA==" target="_blank" class="text-decoration-none" style="color: var(--primary-color)">
-      <span class="small">Developed by Mr.Jaffer</span>
+      <img src="https://i.ibb.co.com/wZSFb93q/6233177219853388617.jpg" alt="Logo" class="custom-logo-icon me-2">
+      <span>Dev by Mr.Jaffer</span>
     </a>
   </footer>
 
-  <!-- Core Scripts -->
+  <!-- Scripts: HLS.js for m3u8 and Plyr for UI -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.8.3/plyr.js"></script>
 
@@ -289,56 +317,62 @@
     const video = document.getElementById('myVideo');
     const loadingOverlay = document.getElementById('loading-overlay');
     
-    // Initialize Player with all quality options
+    // 1. Initialize Plyr
     const player = new Plyr(video, {
-      controls: ['play-large', 'play', 'progress', 'current-time', 'duration', 'mute', 'volume', 'settings', 'fullscreen'],
-      settings: ['quality', 'speed'],
-      quality: { 
-        default: 0, 
-        options: [0, 4320, 2160, 1440, 1080, 720, 576, 480, 360, 240],
-        forced: true, 
-        onChange: (q) => updateQuality(q) 
-      }
+      controls: ['progress', 'play-large', 'play', 'rewind', 'fast-forward', 'current-time', 'duration', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'],
+      seekTime: 10,
+      settings: ['quality', 'speed', 'caption'],
+      speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
+      quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] }
     });
 
+    // 2. Handle HLS (m3u8) or MP4
     if (fileUrl.includes('.m3u8')) {
-      document.getElementById('streamType').innerText = "HLS Stream";
+      document.getElementById('streamType').innerText = "HLS Stream (.m3u8)";
       if (Hls.isSupported()) {
         const hls = new Hls();
         hls.loadSource(fileUrl);
         hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function () {
-          const qualities = hls.levels.map(l => l.height);
-          qualities.unshift(0); // Auto
-          player.config.quality.options = qualities;
-          hideLoading();
+        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
+          // Add quality options from manifest
+          const availableQualities = hls.levels.map((l) => l.height);
+          player.config.quality = {
+            default: availableQualities[0],
+            options: availableQualities,
+            forced: true,
+            onChange: (e) => updateQuality(e),
+          };
+          loadingOverlay.style.opacity = '0';
+          setTimeout(() => loadingOverlay.style.display = 'none', 500);
         });
-        window.hls = hls;
+        
+        window.hls = hls; // Export for quality change function
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        // Fallback for Safari
+        video.src = fileUrl;
+        loadingOverlay.style.display = 'none';
       }
     } else {
-      document.getElementById('streamType').innerText = "Direct MP4";
+      // Direct MP4 Source
+      document.getElementById('streamType').innerText = "Direct MP4 Video";
       video.src = fileUrl;
-      video.onloadedmetadata = () => hideLoading();
+      video.onloadedmetadata = () => {
+        loadingOverlay.style.opacity = '0';
+        setTimeout(() => loadingOverlay.style.display = 'none', 500);
+      };
     }
 
     function updateQuality(newQuality) {
       if (window.hls) {
-        if (newQuality === 0) {
-          window.hls.currentLevel = -1;
-        } else {
-          window.hls.levels.forEach((level, index) => {
-            if (level.height === newQuality) window.hls.currentLevel = index;
-          });
-        }
+        window.hls.levels.forEach((level, levelIndex) => {
+          if (level.height === newQuality) {
+            window.hls.currentLevel = levelIndex;
+          }
+        });
       }
     }
 
-    function hideLoading() {
-      loadingOverlay.style.opacity = '0';
-      setTimeout(() => loadingOverlay.style.display = 'none', 500);
-    }
-
-    // UI Controls
+    // --- Original UI Functions ---
     function toggleMenu(e) { e.stopPropagation(); document.getElementById('customMenu').classList.toggle('show'); }
     window.onclick = () => document.getElementById('customMenu').classList.remove('show');
 
@@ -349,32 +383,55 @@
       chev.style.transform = list.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
     }
 
+    player.on('ready', () => {
+        const wm = document.getElementById('videoWatermark');
+        const container = document.querySelector('.plyr');
+        if(wm && container) container.appendChild(wm);
+    });
+
+    player.on('enterfullscreen', () => {
+        if (screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('landscape').catch(() => {});
+        }
+    });
+
     function triggerDownload() {
-      const a = document.createElement('a'); a.href = fileUrl; a.download = fileName;
-      document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        const link = document.createElement('a');
+        link.href = fileUrl;
+        link.setAttribute('download', fileName);
+        link.target = '_blank';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
     }
-
+    
     function shareButton() {
-      if (navigator.share) navigator.share({ title: fileName, url: window.location.href });
-      else copyLink();
+        if (navigator.share) {
+            navigator.share({ title: fileName, url: window.location.href }).catch(console.error);
+        } else {
+            copyLink();
+        }
     }
 
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied to clipboard!");
+    function copyLink() { 
+        navigator.clipboard.writeText(window.location.href); 
+        alert("Link Copied!"); 
     }
 
-    // External Player Intents
+    // --- Intent Links for External Players ---
     function mx_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;scheme=https;end`; }
     function vlc_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;type=video/*;scheme=https;end`; }
     function playit_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.playit.videoplayer;type=video/*;scheme=https;end`; }
 
-    // Particle Background
+    // --- Enhanced Particle Engine ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
+    let mouse = { x: null, y: null, radius: 150 };
+
     function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
     window.addEventListener('resize', resize);
+    window.addEventListener('mousemove', (e) => { mouse.x = e.x; mouse.y = e.y; });
     resize();
 
     class Particle {
@@ -382,26 +439,44 @@
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.5;
-        this.vy = (Math.random() - 0.5) * 0.5;
-        this.size = Math.random() * 1.5;
+        this.vx = (Math.random() - 0.5) * 0.8;
+        this.vy = (Math.random() - 0.5) * 0.8;
+        this.size = Math.random() * 2 + 1;
       }
       update() {
         this.x += this.vx; this.y += this.vy;
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+        if (mouse.x != null) {
+          let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+          let dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) { this.x += dx * 0.01; this.y += dy * 0.01; }
+        }
       }
       draw() {
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.3)';
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.4)';
         ctx.beginPath(); ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2); ctx.fill();
       }
     }
-    for (let i = 0; i < 70; i++) particles.push(new Particle());
-    function animate() {
+
+    for (let i = 0; i < 90; i++) particles.push(new Particle());
+    function draw() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(animate);
+      particles.forEach((p, i) => {
+        p.update(); p.draw();
+        for (let j = i + 1; j < particles.length; j++) {
+          let dx = p.x - particles[j].x; let dy = p.y - particles[j].y;
+          let d = Math.sqrt(dx * dx + dy * dy);
+          if (d < 150) {
+            ctx.strokeStyle = `rgba(0, 240, 255, ${1 - d/150})`;
+            ctx.lineWidth = 0.5; ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(particles[j].x, particles[j].y); ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(draw);
     }
-    animate();
+    draw();
   </script>
 </body>
-</html>
+                                                                                  </html>
+
