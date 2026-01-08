@@ -1,3 +1,4 @@
+<!--- START OF FILE webav (2).html ---
 
 <!-- Dont Remove My Credit @AV_BOTz_UPDATE -->
 <!DOCTYPE html>
@@ -265,7 +266,7 @@
         <span>{{template_ne}}</span>
       </div>
 
-      <!-- Video Element without src, handled by JS -->
+      <!-- Video Element -->
       <video id="myVideo" crossorigin playsinline controls></video>
     </div>
 
@@ -307,7 +308,7 @@
     </a>
   </footer>
 
-  <!-- Scripts: HLS.js for m3u8 and Plyr for UI -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <script src="https://cdn.plyr.io/3.8.3/plyr.js"></script>
 
@@ -317,44 +318,45 @@
     const video = document.getElementById('myVideo');
     const loadingOverlay = document.getElementById('loading-overlay');
     
-    // 1. Initialize Plyr
+    // 1. Initialize Plyr with Quality Control enabled
     const player = new Plyr(video, {
-      controls: ['progress', 'play-large', 'play', 'rewind', 'fast-forward', 'current-time', 'duration', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'],
-      seekTime: 10,
-      settings: ['quality', 'speed', 'caption'],
-      speed: { selected: 1, options: [0.5, 0.75, 1, 1.25, 1.5, 2] },
-      quality: { default: 576, options: [4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240] }
+      controls: ['play-large', 'play', 'rewind', 'fast-forward', 'progress', 'current-time', 'duration', 'mute', 'volume', 'settings', 'pip', 'airplay', 'fullscreen'],
+      settings: ['quality', 'speed'],
+      quality: { 
+        default: 0, 
+        options: [0, 4320, 2880, 2160, 1440, 1080, 720, 576, 480, 360, 240],
+        forced: true,
+        onChange: (e) => updateQuality(e) 
+      }
     });
 
-    // 2. Handle HLS (m3u8) or MP4
+    // 2. Handle Video Source and Quality Switching
     if (fileUrl.includes('.m3u8')) {
       document.getElementById('streamType').innerText = "HLS Stream (.m3u8)";
       if (Hls.isSupported()) {
         const hls = new Hls();
         hls.loadSource(fileUrl);
         hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, function (event, data) {
-          // Add quality options from manifest
+        
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+          // Get available qualities from m3u8 file
           const availableQualities = hls.levels.map((l) => l.height);
-          player.config.quality = {
-            default: availableQualities[0],
-            options: availableQualities,
-            forced: true,
-            onChange: (e) => updateQuality(e),
-          };
+          availableQualities.unshift(0); // Add 0 for "Auto"
+
+          // Update Plyr settings dynamically
+          player.config.quality.options = availableQualities;
+          
           loadingOverlay.style.opacity = '0';
           setTimeout(() => loadingOverlay.style.display = 'none', 500);
         });
         
-        window.hls = hls; // Export for quality change function
+        window.hls = hls;
       } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        // Fallback for Safari
         video.src = fileUrl;
         loadingOverlay.style.display = 'none';
       }
     } else {
-      // Direct MP4 Source
-      document.getElementById('streamType').innerText = "Direct MP4 Video";
+      document.getElementById('streamType').innerText = "Direct Video File";
       video.src = fileUrl;
       video.onloadedmetadata = () => {
         loadingOverlay.style.opacity = '0';
@@ -362,17 +364,24 @@
       };
     }
 
+    // Function to actually switch HLS quality
     function updateQuality(newQuality) {
       if (window.hls) {
-        window.hls.levels.forEach((level, levelIndex) => {
-          if (level.height === newQuality) {
-            window.hls.currentLevel = levelIndex;
-          }
-        });
+        if (newQuality === 0) {
+          window.hls.currentLevel = -1; // -1 means Auto in HLS.js
+          console.log("Quality set to Auto");
+        } else {
+          window.hls.levels.forEach((level, levelIndex) => {
+            if (level.height === newQuality) {
+              window.hls.currentLevel = levelIndex;
+              console.log("Quality set to: " + newQuality);
+            }
+          });
+        }
       }
     }
 
-    // --- Original UI Functions ---
+    // --- Standard UI Functions ---
     function toggleMenu(e) { e.stopPropagation(); document.getElementById('customMenu').classList.toggle('show'); }
     window.onclick = () => document.getElementById('customMenu').classList.remove('show');
 
@@ -387,12 +396,6 @@
         const wm = document.getElementById('videoWatermark');
         const container = document.querySelector('.plyr');
         if(wm && container) container.appendChild(wm);
-    });
-
-    player.on('enterfullscreen', () => {
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock('landscape').catch(() => {});
-        }
     });
 
     function triggerDownload() {
@@ -418,12 +421,11 @@
         alert("Link Copied!"); 
     }
 
-    // --- Intent Links for External Players ---
     function mx_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.mxtech.videoplayer.ad;type=video/*;scheme=https;end`; }
     function vlc_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=org.videolan.vlc;type=video/*;scheme=https;end`; }
     function playit_player() { window.location.href = `intent://${fileUrl.replace(/^https?:\/\//, '')}#Intent;package=com.playit.videoplayer;type=video/*;scheme=https;end`; }
 
-    // --- Enhanced Particle Engine ---
+    // --- Particle Engine ---
     const canvas = document.getElementById('particle-canvas');
     const ctx = canvas.getContext('2d');
     let particles = [];
@@ -478,5 +480,4 @@
     draw();
   </script>
 </body>
-                                                                                  </html>
-
+</html>
