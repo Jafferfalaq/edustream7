@@ -1,1 +1,189 @@
 
+<!-- Developed for Minimal UI based on User Request -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Player</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background-color: #000; /* Pure Black Background */
+            display: flex; justify-content: center; align-items: center;
+            overflow: hidden; font-family: sans-serif;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            max-width: 100vw;
+            height: 100vh;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+        }
+
+        /* Center Play/Pause Button */
+        .play-overlay {
+            position: absolute;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(5px);
+            border-radius: 50%;
+            width: 80px; height: 80px;
+            display: flex; justify-content: center; align-items: center;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+        .play-overlay i { color: white; font-size: 30px; }
+
+        /* 3-Dots Button */
+        .more-options {
+            position: absolute;
+            bottom: 30px; right: 20px;
+            z-index: 10;
+            color: white; font-size: 24px;
+            cursor: pointer; padding: 10px;
+        }
+
+        /* Menu Popup */
+        .settings-menu {
+            position: absolute;
+            bottom: 70px; right: 20px;
+            background: rgba(30, 30, 30, 0.95);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 10px 0;
+            display: none; flex-direction: column;
+            min-width: 180px; z-index: 20;
+        }
+        .menu-item {
+            padding: 12px 20px;
+            color: white; font-size: 14px;
+            cursor: pointer; display: flex; align-items: center; gap: 10px;
+        }
+        .menu-item:hover { background: rgba(255,255,255,0.1); }
+        
+        select {
+            background: transparent; color: white; border: none; outline: none; width: 100%; cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container" id="playerWrapper">
+        <!-- Video Element -->
+        <video id="myVideo" playsinline></video>
+
+        <!-- Center Play Button -->
+        <div class="play-overlay" id="playBtn">
+            <i class="fa-solid fa-play" id="playIcon"></i>
+        </div>
+
+        <!-- 3-Dots Menu Icon -->
+        <div class="more-options" id="menuToggle">
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+        </div>
+
+        <!-- Settings Menu -->
+        <div class="settings-menu" id="settingsMenu">
+            <div class="menu-item">
+                <i class="fa-solid fa-gauge-high"></i>
+                <select id="speedSelector">
+                    <option value="0.5" style="color:black">0.5x Speed</option>
+                    <option value="1" selected style="color:black">Normal Speed</option>
+                    <option value="1.5" style="color:black">1.5x Speed</option>
+                    <option value="2" style="color:black">2x Speed</option>
+                </select>
+            </div>
+            <div class="menu-item" id="fullScreenToggle">
+                <i class="fa-solid fa-expand"></i> <span>Full Screen (Big)</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HLS.js for .m3u8 support (from your file) -->
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+    <script>
+        // Yahan apni video ka link dalein (m3u8 ya mp4)
+        const fileUrl = "{{file_url}}"; 
+        const video = document.getElementById('myVideo');
+        const playBtn = document.getElementById('playBtn');
+        const playIcon = document.getElementById('playIcon');
+        const menuToggle = document.getElementById('menuToggle');
+        const settingsMenu = document.getElementById('settingsMenu');
+        const speedSelector = document.getElementById('speedSelector');
+        const fullScreenToggle = document.getElementById('fullScreenToggle');
+        const wrapper = document.getElementById('playerWrapper');
+
+        // 1. Video Loading Logic (HLS/MP4)
+        if (fileUrl.includes('.m3u8')) {
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(fileUrl);
+                hls.attachMedia(video);
+            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = fileUrl;
+            }
+        } else {
+            video.src = fileUrl;
+        }
+
+        // 2. Play/Pause Function
+        playBtn.addEventListener('click', togglePlay);
+        video.addEventListener('click', togglePlay);
+
+        function togglePlay() {
+            if (video.paused) {
+                video.play();
+                playIcon.classList.replace('fa-play', 'fa-pause');
+                playBtn.style.opacity = "0"; // Play hone par hide
+            } else {
+                video.pause();
+                playIcon.classList.replace('fa-pause', 'fa-play');
+                playBtn.style.opacity = "1"; // Pause hone par show
+            }
+            settingsMenu.style.display = 'none';
+        }
+
+        // 3. 3-Dots Menu Toggle
+        menuToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            settingsMenu.style.display = settingsMenu.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // 4. Speed Control
+        speedSelector.addEventListener('change', (e) => {
+            video.playbackRate = e.target.value;
+            settingsMenu.style.display = 'none';
+        });
+
+        // 5. Fullscreen Logic (Big/Small)
+        fullScreenToggle.addEventListener('click', () => {
+            if (!document.fullscreenElement) {
+                if (wrapper.requestFullscreen) wrapper.requestFullscreen();
+                fullScreenToggle.querySelector('span').innerText = "Exit Full Screen";
+            } else {
+                if (document.exitFullscreen) document.exitFullscreen();
+                fullScreenToggle.querySelector('span').innerText = "Full Screen (Big)";
+            }
+            settingsMenu.style.display = 'none';
+        });
+
+        // Screen par kahin bhi click karne se menu band ho jaye
+        document.addEventListener('click', () => {
+            settingsMenu.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
