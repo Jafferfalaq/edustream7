@@ -1,189 +1,299 @@
-
-<!-- Developed for Minimal UI based on User Request -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Player</title>
-    <!-- Font Awesome for Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Infinity Pro Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    
     <style>
-        body, html {
-            margin: 0; padding: 0;
-            width: 100%; height: 100%;
-            background-color: #000; /* Pure Black Background */
-            display: flex; justify-content: center; align-items: center;
-            overflow: hidden; font-family: sans-serif;
+        :root {
+            --primary: #00f0ff;
+            --glass: rgba(255, 255, 255, 0.15);
+            --bg-dark: #000000;
+            --safe-area-bottom: env(safe-area-inset-bottom);
         }
 
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 100vw;
-            height: 100vh;
-            display: flex; justify-content: center; align-items: center;
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background: var(--bg-dark); color: white;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden; display: flex; align-items: center; justify-content: center;
+        }
+
+        /* Responsive Container */
+        .player-root {
+            position: relative; width: 100%; height: 100%;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
         }
 
         video {
-            width: 100%;
-            height: auto;
-            max-height: 100%;
+            width: 100%; height: 100%;
+            object-fit: contain; /* Professional default */
+            z-index: 1;
+            transition: transform 0.4s ease;
         }
 
-        /* Center Play/Pause Button */
-        .play-overlay {
-            position: absolute;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(5px);
-            border-radius: 50%;
-            width: 80px; height: 80px;
-            display: flex; justify-content: center; align-items: center;
-            cursor: pointer;
-            transition: opacity 0.3s;
-        }
-        .play-overlay i { color: white; font-size: 30px; }
-
-        /* 3-Dots Button */
-        .more-options {
-            position: absolute;
-            bottom: 30px; right: 20px;
-            z-index: 10;
-            color: white; font-size: 24px;
-            cursor: pointer; padding: 10px;
+        /* UI Overlays */
+        .overlay {
+            position: absolute; inset: 0; z-index: 10;
+            background: radial-gradient(circle, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
+            display: flex; flex-direction: column; justify-content: space-between;
+            transition: opacity 0.3s ease, visibility 0.3s;
         }
 
-        /* Menu Popup */
-        .settings-menu {
-            position: absolute;
-            bottom: 70px; right: 20px;
-            background: rgba(30, 30, 30, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 10px 0;
-            display: none; flex-direction: column;
-            min-width: 180px; z-index: 20;
+        .hidden { opacity: 0; visibility: hidden; cursor: none; }
+
+        /* Center Play/Pause & Gesture Zones */
+        .center-controls {
+            flex-grow: 1; display: flex; align-items: center; justify-content: center;
+            position: relative;
+        }
+
+        .gesture-zone {
+            position: absolute; width: 40%; height: 100%; z-index: 5;
+        }
+        .left-zone { left: 0; }
+        .right-zone { right: 0; }
+
+        .btn-main {
+            width: 75px; height: 75px; border-radius: 50%;
+            background: var(--glass); backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24px; cursor: pointer; z-index: 20;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transition: transform 0.1s;
+        }
+        .btn-main:active { transform: scale(0.9); }
+
+        /* Bottom Control Bar */
+        .bottom-shelf {
+            padding: 20px 20px calc(20px + var(--safe-area-bottom));
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+        }
+
+        .seek-bar-container {
+            width: 100%; height: 16px; display: flex; align-items: center;
+            cursor: pointer; margin-bottom: 15px; position: relative;
+        }
+        .seek-track {
+            width: 100%; height: 4px; background: rgba(255,255,255,0.2);
+            border-radius: 2px; position: relative;
+        }
+        .seek-buffer {
+            position: absolute; height: 100%; background: rgba(255,255,255,0.2);
+            border-radius: 2px; transition: width 0.3s;
+        }
+        .seek-fill {
+            position: absolute; height: 100%; background: var(--primary);
+            border-radius: 2px; box-shadow: 0 0 10px var(--primary);
+        }
+
+        .meta-info {
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .time-label { font-size: 13px; font-weight: 600; letter-spacing: 0.5px; }
+
+        .action-row { display: flex; gap: 25px; align-items: center; }
+        .action-row i { font-size: 19px; cursor: pointer; opacity: 0.8; }
+        .action-row i:hover { opacity: 1; color: var(--primary); }
+
+        /* Settings Menu */
+        .settings-card {
+            position: absolute; bottom: 90px; right: 20px;
+            background: rgba(20,20,20,0.95); backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 8px; display: none;
+            flex-direction: column; min-width: 180px; z-index: 100;
         }
         .menu-item {
-            padding: 12px 20px;
-            color: white; font-size: 14px;
-            cursor: pointer; display: flex; align-items: center; gap: 10px;
+            padding: 12px 16px; display: flex; justify-content: space-between;
+            align-items: center; border-radius: 10px; cursor: pointer; font-size: 14px;
         }
         .menu-item:hover { background: rgba(255,255,255,0.1); }
-        
-        select {
-            background: transparent; color: white; border: none; outline: none; width: 100%; cursor: pointer;
+        .active-val { color: var(--primary); font-weight: bold; }
+
+        /* Reel Mode Bug Fix */
+        .reel-mode video { object-fit: cover; }
+
+        /* Error States */
+        #error-overlay {
+            position: absolute; inset: 0; background: #000; z-index: 100;
+            display: none; align-items: center; justify-content: center; text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="video-container" id="playerWrapper">
-        <!-- Video Element -->
-        <video id="myVideo" playsinline></video>
+<div class="player-root" id="player">
+    <video id="v" playsinline></video>
 
-        <!-- Center Play Button -->
-        <div class="play-overlay" id="playBtn">
-            <i class="fa-solid fa-play" id="playIcon"></i>
+    <!-- Error Handling -->
+    <div id="error-overlay">
+        <div>
+            <i class="fa-solid fa-circle-exclamation" style="font-size: 50px; color: #ff4444;"></i>
+            <p>Video failed to load.<br><small>Check your link or connection.</small></p>
         </div>
+    </div>
 
-        <!-- 3-Dots Menu Icon -->
-        <div class="more-options" id="menuToggle">
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-        </div>
-
-        <!-- Settings Menu -->
-        <div class="settings-menu" id="settingsMenu">
-            <div class="menu-item">
-                <i class="fa-solid fa-gauge-high"></i>
-                <select id="speedSelector">
-                    <option value="0.5" style="color:black">0.5x Speed</option>
-                    <option value="1" selected style="color:black">Normal Speed</option>
-                    <option value="1.5" style="color:black">1.5x Speed</option>
-                    <option value="2" style="color:black">2x Speed</option>
-                </select>
+    <!-- UI Layer -->
+    <div class="overlay" id="ui">
+        <div class="center-controls">
+            <div class="gesture-zone left-zone" id="skipBack"></div>
+            <div class="btn-main" id="playToggle">
+                <i class="fa-solid fa-play"></i>
             </div>
-            <div class="menu-item" id="fullScreenToggle">
-                <i class="fa-solid fa-expand"></i> <span>Full Screen (Big)</span>
+            <div class="gesture-zone right-zone" id="skipFwd"></div>
+        </div>
+
+        <div class="bottom-shelf">
+            <div class="seek-bar-container" id="seekBase">
+                <div class="seek-track">
+                    <div class="seek-buffer" id="bufferBar"></div>
+                    <div class="seek-fill" id="fillBar"></div>
+                </div>
+            </div>
+
+            <div class="meta-info">
+                <div class="time-label">
+                    <span id="cur">00:00</span> / <span id="dur">00:00</span>
+                </div>
+                <div class="action-row">
+                    <i class="fa-solid fa-expand" id="fs"></i>
+                    <i class="fa-solid fa-ellipsis-vertical" id="opt"></i>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- HLS.js for .m3u8 support (from your file) -->
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <!-- Settings Menu -->
+    <div class="settings-card" id="menu">
+        <div class="menu-item" onclick="changeSpeed(0.5)"><span>0.5x</span></div>
+        <div class="menu-item" onclick="changeSpeed(1)"><span style="color:var(--primary)">Normal (1x)</span> <i class="fa-solid fa-check"></i></div>
+        <div class="menu-item" onclick="changeSpeed(1.5)"><span>1.5x</span></div>
+        <div class="menu-item" onclick="changeSpeed(2)"><span>2x Speed</span></div>
+    </div>
+</div>
 
-    <script>
-        // Yahan apni video ka link dalein (m3u8 ya mp4)
-        const fileUrl = "{{file_url}}"; 
-        const video = document.getElementById('myVideo');
-        const playBtn = document.getElementById('playBtn');
-        const playIcon = document.getElementById('playIcon');
-        const menuToggle = document.getElementById('menuToggle');
-        const settingsMenu = document.getElementById('settingsMenu');
-        const speedSelector = document.getElementById('speedSelector');
-        const fullScreenToggle = document.getElementById('fullScreenToggle');
-        const wrapper = document.getElementById('playerWrapper');
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<script>
+    const v = document.getElementById('v');
+    const ui = document.getElementById('ui');
+    const playBtn = document.getElementById('playToggle');
+    const menu = document.getElementById('menu');
+    const fill = document.getElementById('fillBar');
+    const buffer = document.getElementById('bufferBar');
+    
+    // Config: Source detection
+    const src = "{{file_url}}"; 
 
-        // 1. Video Loading Logic (HLS/MP4)
-        if (fileUrl.includes('.m3u8')) {
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(fileUrl);
-                hls.attachMedia(video);
-            } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-                video.src = fileUrl;
-            }
+    // Initialize Video
+    if (src.includes('.m3u8')) {
+        if (Hls.isSupported()) {
+            const hls = new Hls();
+            hls.loadSource(src);
+            hls.attachMedia(v);
+        }
+    } else {
+        v.src = src;
+    }
+
+    // Auto Aspect Ratio Detection
+    v.onloadedmetadata = () => {
+        document.getElementById('dur').innerText = format(v.duration);
+        if (v.videoWidth / v.videoHeight < 1) {
+            document.getElementById('player').classList.add('reel-mode');
+        }
+    };
+
+    // Play/Pause with UI Feedback
+    function toggle() {
+        if (v.paused) {
+            v.play();
+            playBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            startIdleTimer();
         } else {
-            video.src = fileUrl;
+            v.pause();
+            playBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            ui.classList.remove('hidden');
         }
+    }
 
-        // 2. Play/Pause Function
-        playBtn.addEventListener('click', togglePlay);
-        video.addEventListener('click', togglePlay);
+    playBtn.onclick = toggle;
 
-        function togglePlay() {
-            if (video.paused) {
-                video.play();
-                playIcon.classList.replace('fa-play', 'fa-pause');
-                playBtn.style.opacity = "0"; // Play hone par hide
-            } else {
-                video.pause();
-                playIcon.classList.replace('fa-pause', 'fa-play');
-                playBtn.style.opacity = "1"; // Pause hone par show
-            }
-            settingsMenu.style.display = 'none';
+    // Smart Auto-Hide logic
+    let idle;
+    function startIdleTimer() {
+        clearTimeout(idle);
+        ui.classList.remove('hidden');
+        if (!v.paused) {
+            idle = setTimeout(() => {
+                if(menu.style.display !== 'flex') ui.classList.add('hidden');
+            }, 3000);
         }
+    }
 
-        // 3. 3-Dots Menu Toggle
-        menuToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            settingsMenu.style.display = settingsMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
+    document.getElementById('player').onmousemove = startIdleTimer;
+    document.getElementById('player').ontouchstart = startIdleTimer;
 
-        // 4. Speed Control
-        speedSelector.addEventListener('change', (e) => {
-            video.playbackRate = e.target.value;
-            settingsMenu.style.display = 'none';
-        });
-
-        // 5. Fullscreen Logic (Big/Small)
-        fullScreenToggle.addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                if (wrapper.requestFullscreen) wrapper.requestFullscreen();
-                fullScreenToggle.querySelector('span').innerText = "Exit Full Screen";
-            } else {
-                if (document.exitFullscreen) document.exitFullscreen();
-                fullScreenToggle.querySelector('span').innerText = "Full Screen (Big)";
+    // Double Tap Gestures (Professional feature)
+    let lastTap = 0;
+    document.querySelectorAll('.gesture-zone').forEach(zone => {
+        zone.onclick = (e) => {
+            let now = Date.now();
+            if (now - lastTap < 300) {
+                if (zone.id === 'skipBack') v.currentTime -= 10;
+                else v.currentTime += 10;
             }
-            settingsMenu.style.display = 'none';
-        });
+            lastTap = now;
+        }
+    });
 
-        // Screen par kahin bhi click karne se menu band ho jaye
-        document.addEventListener('click', () => {
-            settingsMenu.style.display = 'none';
-        });
-    </script>
+    // Seek Bar Logic
+    v.ontimeupdate = () => {
+        const p = (v.currentTime / v.duration) * 100;
+        fill.style.width = p + '%';
+        document.getElementById('cur').innerText = format(v.currentTime);
+        
+        // Buffer Logic
+        if (v.buffered.length > 0) {
+            const b = (v.buffered.end(v.buffered.length - 1) / v.duration) * 100;
+            buffer.style.width = b + '%';
+        }
+    };
+
+    document.getElementById('seekBase').onclick = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        v.currentTime = ((e.clientX - rect.left) / rect.width) * v.duration;
+    };
+
+    // Menu Controls
+    document.getElementById('opt').onclick = (e) => {
+        e.stopPropagation();
+        menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+    };
+
+    window.changeSpeed = (s) => {
+        v.playbackRate = s;
+        menu.style.display = 'none';
+    };
+
+    document.getElementById('fs').onclick = () => {
+        if (!document.fullscreenElement) document.getElementById('player').requestFullscreen();
+        else document.exitFullscreen();
+    };
+
+    v.onerror = () => document.getElementById('error-overlay').style.display = 'flex';
+
+    function format(s) {
+        let m = Math.floor(s / 60);
+        let sec = Math.floor(s % 60);
+        return `${m}:${sec < 10 ? '0' : ''}${sec}`;
+    }
+
+    window.onclick = () => menu.style.display = 'none';
+</script>
 </body>
 </html>
